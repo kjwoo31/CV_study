@@ -42,4 +42,16 @@ gradient descent: slope를 따라 loss가 최소가 되는 W 찾는 방법
 </br>
 
 ## Lecture 5 | Convolutional Neural Networks
+#### Conv Layer: image보다 작은 크기의 spatial filter(w)를 image의 spatial location과 dot product. (convolve/slide한다 표현) filter 하나 당 한 개의 activation map을 생성하고 이를 stack하여 원하는 출력을 얻는 방식.  
+*spatial dimension: 크기 N의 input, 크기 F의 filter가 있다면, filter 간 간격에 따라 Output size는 (N-F) / stride + 1 으로 결정된다. (Output size를 image size와 같게 하기 위해 padding 추가, (N+2xpad-F) / stride + 1)  
+*parameter 수: (filter 크기+1)x(filter 수)  
+*5x5 filter = 5x5 receptive field for each neuron  
+*이전 fully connected layer는 모든 streched out input이 연결되어 있었지만 Conv layer에서는 local spatial region이 연결됨.  
+#### Pooling layer: makes the represantations smaller and more manageable, (Downsampling)
+*Max pooling: filter에 속한 내용 중 max 값을 output으로 하는 pooling 방법  
+*common settings for pooling: F=2, S=2 / F=3, S=2  
+#### FC Layer (Fully Connected Layer)
+<img src="https://user-images.githubusercontent.com/59794238/92955272-d0e70580-f49f-11ea-983a-dba1df5d8dd5.png" width="40%"></img>  
+</br>
 
+## Lecture 6 | Training Neural Networks, part I
