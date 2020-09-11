@@ -39,6 +39,7 @@ gradient descent: slope를 따라 loss가 최소가 되는 W 찾는 방법
 *벡터 연산 시, gradient shape should be same with the shape of variable  
 <img src="https://user-images.githubusercontent.com/59794238/92945284-084db600-f490-11ea-88eb-1108e165ca72.png" width="40%"></img>  
 #### neural network: more complex non-linear function을 만들기 위해 여러 layer를 stack한 구조
+</br>
 
 ## Lecture 5 | Convolutional Neural Networks
 
