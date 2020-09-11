@@ -1,6 +1,6 @@
 # [Stanford CS231n](http://cs231n.stanford.edu/2017/syllabus.html)를 듣고 정리한 내용
 
-## Lecture 2: Image Classification
+## Lecture 2 | Image Classification
 가장 간단하게 생각할 수 있는 방법은 픽셀별로 L1 distance 비교하는 것인데, 이를 더 robust하게 만들어야 한다.
 1. kNN: region의 label을 결정할 때, instead of copying label from nearest neighbor, take **majority vote** from K closest points (outlier 처리 가능)  
 *L1/L2 distance 선택: individual vector가 의미가 있을 경우 L1 distance, 종합적인 비교가 필요할 경우 L2 distance. Data에 따라 차이가 있어 둘 다 사용하고 비교.  
@@ -11,5 +11,5 @@
 2. linear classification: f(x, W)=Wx+b, data에 대한 정보를 **parameter W**에 저장. Score에 따라 결과값 예측. 하지만 one template만 사용하기 때문에 고차원 문제에 사용하기 어려움.
 </br>
 
-## Lecture 3: Loss Functions and Optimization
+## Lecture 3 | Loss Functions and Optimization
 
