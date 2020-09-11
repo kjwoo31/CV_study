@@ -32,3 +32,13 @@ gradient descent: slope를 따라 loss가 최소가 되는 W 찾는 방법
 </br>
 
 ## Lecture 4 | Introduction to Neural Networks
+#### computational graph: node를 사용하여 연산 과정을 순차적으로 나타내는 graph. backpropagation 가능  
+- backpropagation: 연산의 역순으로 따져 gradient 찾는 과정.   
+*연산 방향으로 따질 경우 gradient를 찾을 때 전과정을 거쳐서 비효율적인데, 이 방법을 사용하면 chain rule을 사용하여 gradient 찾기가 쉬워진다. (Upstream gradient에 local gradient를 곱해 gradient를 구할 수 있다)  
+*layer마다 forward()/ backward() API를 사용하여 결과값/gradient를 출력.  
+*벡터 연산 시, gradient shape should be same with the shape of variable  
+<img src="https://user-images.githubusercontent.com/59794238/92945284-084db600-f490-11ea-88eb-1108e165ca72.png" width="40%"></img>  
+#### neural network: more complex non-linear function을 만들기 위해 여러 layer를 stack한 구조
+
+## Lecture 5 | Convolutional Neural Networks
+
