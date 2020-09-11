@@ -1,3 +1,5 @@
+# [Stanford CS231n](http://cs231n.stanford.edu/2017/syllabus.html)를 듣고 정리한 내용
+
 ## Lecture 2: Image Classification
 가장 간단하게 생각할 수 있는 방법은 픽셀별로 L1 distance 비교하는 것인데, 이를 더 robust하게 만들어야 한다.
 1. kNN: region의 label을 결정할 때, instead of copying label from nearest neighbor, take **majority vote** from K closest points (outlier 처리 가능)  
