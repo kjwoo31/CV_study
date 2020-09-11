@@ -13,13 +13,13 @@
 
 ## Lecture 3 | Loss Functions and Optimization
 #### loss function: Which W가 가장 좋은지 찾는 함수. 다른 score에 비해 margin을 두고 차이가 나야 좋은 결과.  
-1) multiclass SVM loss: labeling이 incorrect 한 물체에 대한 score에 비해 correct한 물체 score가 일정 safety margin을 두고 더 높다면, loss가 0. 그렇지 않으면 score 차이에 따라 linear하게 차이가 나는 loss 함수. (min: 0, max: infinity)  
+1) multiclass SVM loss: labeling이 incorrect 한 물체에 대한 score에 비해 correct한 물체 score가 일정 safety **margin**을 두고 더 높다면, loss가 0. 그렇지 않으면 score 차이에 따라 linear하게 차이가 나는 loss 함수. (min: 0, max: infinity)  
 <img src="https://user-images.githubusercontent.com/59794238/92897754-6a8ac480-f458-11ea-8e9e-64534120ca1b.png" width="30%"></img>
 <img src="https://user-images.githubusercontent.com/59794238/92896937-c1dc6500-f457-11ea-8c98-0dc17d04f2f8.png" width="30%"></img>  
 *처음 시작할 때, incorrect class에 대해서만 1이 출력되기 때문에(s는 0에 가까움) SVM loss는 (number of classes) - 1  
 *overfitting되지 않도록 data loss뿐만 아니라 Regularization loss 사용 (lambda를 이용해 test data의 영향을 조절)  
 *주로 L2 regularization 사용, sparsity 있는 경우 L1
-2) Softmax Classifier (Multinomial Logistic Regression): score를 exponential을 사용해 0~1 사이 확률로 나타냄. correct할 경우 1에 가깝도록 설정. 그 후, 확률에 -log를 취하여 margin을 키우고 부호를 올바르게 설정 (min: 0(이론상), max: infinity)  
+2) Softmax Classifier (Multinomial Logistic Regression): score를 exponential을 사용해 0~1 사이 **확률**로 나타냄. correct할 경우 1에 가깝도록 설정. 그 후, 확률에 **-log**를 취하여 margin을 키우고 부호를 올바르게 설정 (min: 0(이론상), max: infinity)  
 <img src="https://user-images.githubusercontent.com/59794238/92897709-6363b680-f458-11ea-9045-6ed36a84bf60.png" width="20%"></img>  
 *처음 시작할 때, -log(Class 개수)  
 *차이점: SVM은 일정 Margin을 넘어가면 고려 X, Softmax는 제한 X  
@@ -33,8 +33,8 @@ gradient descent: slope를 따라 loss가 최소가 되는 W 찾는 방법
 
 ## Lecture 4 | Introduction to Neural Networks
 #### computational graph: node를 사용하여 연산 과정을 순차적으로 나타내는 graph. backpropagation 가능  
-- backpropagation: 연산의 역순으로 따져 gradient 찾는 과정.   
-*연산 방향으로 따질 경우 gradient를 찾을 때 전과정을 거쳐서 비효율적인데, 이 방법을 사용하면 chain rule을 사용하여 gradient 찾기가 쉬워진다. (Upstream gradient에 local gradient를 곱해 gradient를 구할 수 있다)  
+- backpropagation: 연산의 역순으로 따져 **gradient 찾는 과정**.   
+*연산 방향으로 따질 경우 gradient를 찾을 때 전과정을 거쳐서 비효율적인데, 이 방법을 사용하면 **chain rule**을 사용하여 gradient 찾기가 쉬워진다. (Upstream gradient에 local gradient를 곱해 gradient를 구할 수 있다)  
 *layer마다 forward()/ backward() API를 사용하여 결과값/gradient를 출력.  
 *벡터 연산 시, gradient shape should be same with the shape of variable  
 <img src="https://user-images.githubusercontent.com/59794238/92945284-084db600-f490-11ea-88eb-1108e165ca72.png" width="40%"></img>  
