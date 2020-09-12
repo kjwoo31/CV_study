@@ -55,3 +55,30 @@ gradient descent: slope를 따라 loss가 최소가 되는 W 찾는 방법
 </br>
 
 ## Lecture 6 | Training Neural Networks, part I
+### 1. setup
+#### activation function
+*sigmoid: 1/(1+exp(x)). can kill gradient, output not zero-centered (gradient가 모두 같은 부호로 update되어 비효율적)  
+*tanh(x): zero-centered, still can kill gradient  
+*ReLU: max(0, x). 속도가 빠르고 AlexNet에 사용됨, 음수일 경우 kill gradient, not zero-centered. (초기화를 잘못하거나 learning rate이 높으면 ReLU가 Data Cloud로부터 update를 받지 못할 수 있음. 이를 피하기 위해 positive biases를 추가하기도 하는데, 이 방법이 효과가 있는지는 확실하지 않다.)  
+*Leaky ReLU: max(0.01x, x). ReLU의 음수에서의 문제를 해결.  
+(0.01을 parameter로 바꾼 PReLU, zero mean output을 얻기 위해 조절한 ELU 등 다른 ReLU, weight를 사용한 Maxout도 존재)  
+#### preprocessing : zero-mean, normalization을 함. 이미지의 경우, channel별로 zero-mean 수행 후 학습  
+#### weight initialization
+*모두 0으로 initialize되면 모든 nueron이 같은 연산, 같은 update을 하게 됨.  
+*Small random numbers: Small data에서는 잘 작동하지만 activation 함수를 사용한 deep network에서는 w가 너무 작은 겂이라 곱할수록 출력 값이 급격히 줄며, 수렴하게 된다. Backprop시에도 gradient 또한 엄청 작은 값이 되어 업데이트가 잘 일어나지 않는다.  
+*making weight big: output either very negative or very positive, gradient is 0.  
+*Xavier initialization: 적절한 가중치로 초기화하는 방법. W = np.random.randn(fan_in, fan_out) / np.sqrt(fan_in). (Standard gaussian으로 뽑은 값을 입력의 수로 scaling.) 이 식을 통해 input, output의 variance를 맞춰준다. Linear activation이 있다는 가정을 포함한다.  
+*Xavier initialization in ReLU: ReLU는 출력의 절반을 0으로 만들기 때문에 입력의 수를 반으로 줄여야 한다.  
+#### batch normalization (추후 추가)
+</br>
+
+### 2. training
+#### babysitting the learning process: check the loss is reasonable, start with small portion of the training data (overfit해야 함)
+#### hyperparameter optimization: Cross-validation strategy 사용. few epoch 동안 돌려보고, 좋은 parameter 찾기를 반복한다.
+*Learning rate: 너무 작으면 update가 잘 이루어지지 않아 loss barely change. 너무 크면 loss explode, NaN 발생. (cost가 original cost의 3배 이상이면 learning rate이 너무 크다고 보면 됨.)  
+<img src="https://user-images.githubusercontent.com/59794238/93001071-72855a00-f567-11ea-80e8-f7a3d747ce15.png" width="40%"></img>  
+*parameter별로 일정 간격을 두고 찾는 grid search, 범위 내의 임의의 parameter를 사용하는 random search가 있다. Random search를 사용하면 important parameter에 대해 더 많은 경우의 수를 볼 수 있어 더 좋은 경우가 있다.  
+*ratio of weight updates/weight magnitudes: 0.001 근처가 적당하다  
+</br>
+
+## Lecture 7 | Training Neural Networks, part II
