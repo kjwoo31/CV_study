@@ -73,7 +73,7 @@ gradient descent: slope를 따라 loss가 최소가 되는 W 찾는 방법
 *Conv Layer에서의 normalization은 같은 Activation Map의 같은 채널에 있는 요소들은 같이 Normalize 해주고, batch norm은 feature element별로(차원별로) Normalization한다. (CNN에서는 Spatial structure가 유지되기를 원하기 때문)  
 *Batch Norm 연산은 FC(Fully-Connected Layer)나 Conv(Convolution Layer) 직후에 넣는다.  
 *scaling, shifting factor를 추가하여 얼마나 saturation이 일어나면 좋을지 조절 가능. 네트워크 값들을 복구하고 싶다면 y=rx+b에서 r에 분산 값을, b에 평균값을 넣어주면 된다.  
-*Batch Norm을 쓰면 learning rate를 키울 수 있고 다양한 초기화 기법들도 사용해 볼 수 있으며 Regulation 효과를 준다.  
+*Batch Norm을 쓰면 learning rate를 키울 수 있고(데이터의 크기에 영향을 덜 ) 다양한 초기화 기법들도 사용해 볼 수 있으며 Regulation 효과를 준다.  
 *Batch Norm에서 평균과 분산은 학습 데이터로부터 얻는다. Test할 때에 추가적인 계산을 하지는 않는다.  
 <img src="https://user-images.githubusercontent.com/59794238/93011037-c88ce880-f5cd-11ea-958a-a71fae62db2d.png" width="40%"></img>  
 </br>
