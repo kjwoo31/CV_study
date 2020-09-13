@@ -106,3 +106,27 @@ gradient descent: slope를 따라 loss가 최소가 되는 W 찾는 방법
 </br>
 
 ## Lecture 8 | Deep Learning Software
+#### GPU: Graphics Card. More cores than CPU, but each core is much slower and dumb; great for parallel tasks
+*GPU의 programming 방법으로 NVIDIA에서 CUDA를 지원하고 higher-level API로 cuBLAS, cuDNN 등의 라이브러리가 있다.  
+*GPU를 사용했을 때 CPU를 사용하는 것보다 약 70배로 속도가 향상되고, 딥러닝에 필요한 기본적인 연산들을 제공하는 cuDNN을 사용하면 기본 CUDA를 사용했을 때보다 약 3배 정도 빠르다.  
+*GPU로 학습할 때, train data가 하드드라이브에 갇히는 bottleneck 현상이 발생할 수 있다. 전체 dataset을 RAM에 올리거나 HDD 대신 SSD를 사용하여 해결할 수 있다.  
+#### framework (Tensorflow, PyTorch, caffe)
+*computational graph를 build, compute gradient, effeciently run하기 쉬움.  
+- Tensorflow  
+*computational graph 그리는 과정: define(create placeholder, build graph, compute gradients) -> run(enter session, create numpy arrays used in graph, train network by running graph)  
+*loss 변화를 보기 위해 dummy node update를 사용하여 비교  
+*라이브러리를 통해 optimizer를 사용한 compute gradient, update weight와 Xavier initializer와 같은 layer 생성 등도 가능하다.  
+*keras: layer on top of tensorflow, model 생성 및 optimization, fit 과정을 쉽게 할 수 있다.   
+- PyTorch  
+*tensor(Numpy array), variable(Node in graphs), module(neural network layer)  
+*nn: keras와 같은 기능을 하는 higher-level wrapper. Autograd가 있어 Module을 새롭게 define할 수 있다.  
+*dataloader로 dataset wrap하여 사용  
+*visdom으로 시각화 가능하지만 tensorboard와 달리 computational graph를 그리는 기능은 없다.  
+- 차이점  
+*tensorflow는 graph를 정의하고 사용하는 static 방식, pytorch는 graph building과 executaion을 함께하는 dynamic 방식이다. 그래서 tensorflow의 경우 효율적이고 serialize할 수 있다. pycharm의 경우 conditional graph, loop을 만들어 사용할 수 있다.  
+- Caffe  
+*C++ 사용, deploying model(production)에 주로 사용됨.  
+*convert data, define network, define solver, train  
+</br>
+
+## Lecture 9 | CNN Architectures
