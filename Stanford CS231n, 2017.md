@@ -88,3 +88,21 @@ gradient descent: slope를 따라 loss가 최소가 되는 W 찾는 방법
 </br>
 
 ## Lecture 7 | Training Neural Networks, part II
+#### fancier optimization
+*SGD(Stochastic gradient descent)는 local minima, saddle point에서 멈추는 문제 발생   
+-> 방향 유지. 속도, 마찰을 포함한 momentum 개념을 추가하여 해결 (Momentum, Nesterov Momentum)  
+-> 보폭 조절. learning rate에 squared gradient를 더하여 점차 learning rate를 줄여감. RMSProp는 새로운 기울기의 정보만 반영하여 learning rate이 급격히 줄어드는 것을 방지하는 방법 (AdaGrad, RMSProp)  
+-> 둘을 섞은 기법. first timestep에서 second moment을 0으로 초기화하였기 때문에 large step을 하게 된다. 이를 방지하기 위해 bias correction을 해준다. 주로 사용되는 optimization 방법이고 설정은 beta1=0.9, beta2=0.999, learning rate=1e-3 or 5e-4로 주로 한다. (Adam)  
+*high learning rate, low learning rate의 장점을 모두 사용하기 위해 learning rate decay를 사용하기도 함.  
+*second-order optimization를 사용한 방법도 있다 (Hessian Matrix를 사용한 방법은 matrix 크기가 N^2꼴이라 크기가 너무 커져 딥러닝에 사용하기 어렵고 대신 Quasi-Newton method를 활용한 BGFS가 사용됨. Style transfer와 같이 less stochasticity, fewer parameter가 있을 때 사용)  
+#### model ensembles: 여러 개 모델을 동시에 사용하여 예측하고 결과값을 종합하는 방법. Maximal performance를 얻기 위해 사용
+*tips: use multiple snapshots of a single model, use moving average of the parameter vector rather than actual parameter vector (polyak averaging)  
+#### Regularization: single-model에서 overfitting을 방지하여 성능 향상
+*Dropout: train 과정에서 반 정도의 뉴런을 비활성화하여 학습하는 방식. Test time에는 probability를 곱하여 randomness를 줄인다. (test time의 probability를 곱하는 과정을 train 과정에서 하는 inverted-dropout이 more common)  
+*Data Augmentation: 뒤집기, 자르기 등을 통해 데이터 형태를 다양하게 함  
+*DropConnect, Fractional Max Pooling, Stochastic Depth 등 common하진 않지만 다른 regularization 방법도 있다.  
+#### Transfer Learning: ImageNet과 같은 큰 dataset으로 학습시킨 후, layer들을 freeze하고 small dataset만 reinitialize하여 학습하는 방법.
+*학습시키려는 Dataset이 큰 경우, 더 많은 layer를 갖고 train. (finetuning)  
+</br>
+
+## Lecture 8 | Deep Learning Software
