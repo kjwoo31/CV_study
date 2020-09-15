@@ -130,18 +130,18 @@ gradient descent: slope를 따라 loss가 최소가 되는 W 찾는 방법
 </br>
 
 ## Lecture 9 | CNN Architectures
-1. AlexNet: first large scale CNN for image detection. (2012 ImageNet Challenge Winner) 5 conv layers, max pool layers, normalization layers 사용  
+#### 1. AlexNet: first large scale CNN for image detection. (2012 ImageNet Challenge Winner) 5 conv layers, max pool layers, normalization layers 사용  
 *하나의 layer가 2개로 나눠진 경우가 있는데, 그 당시 사용된 GTX 580 GPU의 경우 3GB memory만 있어서 half the nueron을 분리하여 2개의 GPU를 사용한 것이다.  
 *ZFNet (2013 ImageNet Challenge Winner): Same Number of Layers, Improved hyperparameters  
-2. VGGNet (2014) : Smaller filters, Deeper Networks (layer 수 증가, 16-19 layers) 사용  
+#### 2. VGGNet (2014) : Smaller filters, Deeper Networks (layer 수 증가, 16-19 layers) 사용  
 *3x3의 smaller filter를 사용. stack of three 3x3 conv laters has same effective receptive field as one 7x7 conv layer but deeper, more non-linearities, fewer parameters.  
-3. GoogleNet  (2014 ImageNet Challenge Winner): Deeper networks (22 layers), with computational efficiency (inception module)  
+#### 3. GoogleNet  (2014 ImageNet Challenge Winner): Deeper networks (22 layers), with computational efficiency (inception module)  
 *Stem Network - Stacked Inception Modules (auxiliary classifiaction outputs) - Classifier output
 *Fully Connected Layer를 사용하지 않아 12x less parameter than AlexNet  
 *Inception module: operating several filters in parallel, concatenate all filter outputs. (output의 spatial dimension을 같도록 하면서 filter를 쌓는다)  
 *filter가 쌓이면서 depth가 점점 커지는데, 이를 해결하기 위해 1x1 convolution을 하는 bottleneck layer 사용 (conv layer의 전, pool layer의 후)  
 *Inception Module에 auxiliary classification output을 추가하여 학습 도중의 gradient를 반영할 수 있게 한다. 이 방법은 이후 Batch Normalization으로 대체되었다.  
-4. ResNet (2015 ImageNet Challenge Winner) : Very deep network (152 layer) using residual connection  
+#### 4. ResNet (2015 ImageNet Challenge Winner) : Very deep network (152 layer) using residual connection  
 *plain CNN에 layer를 많이 추가하면 train, test 성능이 오히려 안 좋아진다. 그런데 ResNet에서는 layer를 거친 예측값을 fit하는 것이 아닌, layer를 거친 값과 layer를 거치지 않은 값의 차이인 residual을 fit하는 방법을 사용하여 이 문제를 해결하였다. (residual이 0으로 가도록 하는 학습 과정(identity mapping)이 도움이 된다는 가설이 있다 - encourage model to not use layers that it doesn't need)  
 *GoogleNet과 유사하게 bottleneck layer를 사용하였는데, 앞뒤에 1x1 conv layer를 놓아 filter 수를 줄여서 conv layer를 지난 후 다시 filter 수를 늘리는 방법을 사용한다.  
 *Improvement: residual block의 width를 늘리는 ResNeXt, network depth를 늘리는 FractalNet, layer가 서로서로 연결되는 DenseNet, squeeze layer과 expand layer를 활용하여 효율성을 높인 SqueezeNet 등  
