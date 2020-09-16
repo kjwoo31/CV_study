@@ -148,4 +148,14 @@ gradient descent: slope를 따라 loss가 최소가 되는 W 찾는 방법
 </br>
 
 ## Lecture 10 | Recurrent Neural Networks
+#### Recurrent Neural Network: h_t=f(h_t-1, x_t)로, time step마다 input을 same weight, same formula에 대입하는 구조. output layer에 결과가 들어오면 Softmax 함수에서 평가를 거치고 점점 더 나은 결과값을 얻게 된다.  
+*Many to Many, Many to One, One to Many case에서 동일한 함수에 대입하여 결과를 sum하기만 하면 되기 때문에 효과적  
+*문자열 작성에 쓰인다. input word가 들어오면 그 다음 단어를 예측하는 방식으로, 셰익스피어의 소설, 코드 등을 작성한 예시가 있다.  
+*이미지에 대한 caption을 출력하는 예시, visual question answering도 있다. 단어별로 hard attention을 갖는 위치가 다르다.   
+*Multilayer RNNs: RNN layer를 여러 개 stack. (3~4개가 주로 사용됨)  
+*Vanilla RNN은 backpropagation이 반복되면서 gradient이 0이 되거나 무한대가 되는 문제가 발생한다. 이 문제를 해결하기 위해 LSTM을 사용한다.  
+*LSTM: RNN layer 안의 hidden state뿐만 아니라 cell state을 사용. ifog gate(input, forget, output, gate gate)의 값에 따라 backpropagation. (ifo는 sigmoid)  
+</br>
+
+## Lecture 11 | Detection and Segmentation
 
