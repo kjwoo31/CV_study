@@ -158,4 +158,23 @@ gradient descent: slope를 따라 loss가 최소가 되는 W 찾는 방법
 </br>
 
 ## Lecture 11 | Detection and Segmentation
+#### 1. Semantic Segmentation: No objects, just pixels  
+*fully convolutional: 여러 convolutional layer를 거쳐 classification score만 있는 tensor를 얻는 방법. 필요한 메모리, 연산량이 너무 많음 -> downsampling, upsampling inside the network  
+*downsampling은 pooling을 통해, upsampling은 unpooling을 통해 해결. (unpooling: 키우려는 크기만큼 복제 (Nearest Neighbor) 또는 0으로 채움 (Bed of Nails) 또는 Max Pooling에서 가져온 위치를 기억하여 그 위치에 채움 (Max Unpooling))  
+*transpose convolution: input값을 복제한 filter에 따라 output 값을 결정하는 방법. (겹치면 sum) convolution 과정에서 하나의 matrix를 transpose하였을 때의 결과와 같아서 transpose convolution이라 부른다.  
+#### 2. Classification+Localization  
+*과정: AlexNet을 거쳐 나온 vector를 fully connected layer를 거치게 하여 score, bbox를 찾음.  
+#### 3. Object Detection: 몇 개의 object가 나올지 모르다는 점이 classification+localization과의 차이점
+*Sliding Window: 화면마다 물체인지 배경인지 score를 매기는 방법.  
+*Region Proposals: Finding blobby image regions. 덜 정확하지만 물체가 있을만한 위치를 빠르게 찾을 수 있음. 이후 image size가 같도록 warp한 후 ConvNet를 거쳐 score가 물체의 정확한 위치를 찾는다. (R-CNN)  
+*Fast R-CNN: ConvNet을 거친 후 RoI 위치의 Conv layer 값을 사용하는 방식. RoI마다 ConvNet을 거치는 번거로운 과정이 없다. 그 대신 RoI Pooling을 통해 size를 맞추어 FC layer에 보낸다.  
+*Faster R-CNN: Insert Region Proposal Network (RPN).  
+*Detection without Proposals: YOLO/SSD. (single shot method)  
+#### 4. Instance Segmentation: semantic segmentation, object detection의 혼합.
+*Mask R-CNN: Faster R-CNN에 Conv Layer를 추가하여 each pixel에 물체가 있는지 없는지 예측  
+</br>
+
+## Lecture 12 | Visualizing and Understanding
+
+
 
