@@ -189,6 +189,27 @@ gradient descent: slope를 따라 loss가 최소가 되는 W 찾는 방법
 *DeepDream: feature를 증폭시켜 input 이미지와 결합해 비슷한 형태의 이미지를 만들어내는 알고리즘 (image, layer 선택 후 forward, Layer에서 Activation 값과 같은 gradient 설정, backward, update image 반복)  
 *Feature Inversion: 네트워크가 깊어지면 점점 feature를 잃어감. 주어진 feature vector와 일치하는 이미지를 찾아 멈춰야함.  
 *기타: 같은 texture의 더 큰 이미지를 생성하는 Neural Texture Synthesis, 비슷한 스타일의 그림을 만드는 Neural Style Transfer  
+</br>
 
+## Lecture 13 | Generative Models
+*Unsupervised Learning: Data만으로 hidden structure를 찾는 과정. Ex. Clustering, dimensionality reduction, feature learning(autoencoders)  
+#### Generative Models: Train 데이터가 주어지면 그 데이터 분포와 동일한 새로운 sample 생성, 기존 data와 생성된 data가 유사하도록 학습 - 실제와 같은 sample을 얻고 latent representation을 찾을 수 있음
+<img src="https://user-images.githubusercontent.com/59794238/93793121-5a9d8c80-fc71-11ea-8414-47615f72ca39.png" width="50%"></img>  
+#### PixelRNN, PixelCNN
+*Fully visible belief network: pixel 간의 likelihood를 neural network로 구현한 것. (x_i와 previous pixel들 간 likelihood) PixelRNN, PixelCNN이 그 예로, 방식이 다르다  
+*PixelRNN은 corner부터 시작하고 RNN/LSTM을 사용해 이전 픽셀에 dependency (속도 느림)  
+*PixelCNN 또한 corner부터 시작하고 CNN over context region을 사용해 이전 픽셀에 dependency. Likelihood of training images를 maximize하며 training. (RNN보다 빠르지만 sequentially 학습하기 때문에 느림)  
+#### Variational Autoencoders (VAE)
+*PixelRNN, PixelCNN은 숨어있는 요소(latent)가 없는 밀도 함수를 잘 정의하고, intractable(다루기 힘든) 밀도 함수를 정의하는 것이 VAE다.  
+*likelihood에 대한 lower bound로 유도하고 최적화  
+*Autoencoder: 비지도 학습을 통해 저차원의 feature representation을 만드는 과정. (차원 축소를 통해 중요한 feature 찾기) Encoder를 거쳐 Feature를 얻고, Decoder를 거쳐 Reconstructed Input data를 얻는다.  
+*VAE: autoencoder에 probabilistic spin을 하고 latent를 정의하여 새로운 이미지를 생성하는 방법. 특정 Feature에 대한 data likelihood를 정의하고 likelihood의 lower bound를 optimize하여 원하는 data 생성 (ex.미소/머리 포즈 등의 feature에 따라 분류)  
+#### Generative Adversarial Networks (GAN) : 밀도 모델링 대신 게임 이론을 사용
+*Generator Network, Discriminator(구별) network로 구성. Discriminator는 objective를 최대화하고 Generator는 objective를 최소화해야 한다. 이를 위해, Discriminator에서 gradient ascent를 통해 잘 구별하는 네트워크를 만든 후, Generator에서 식을 바꿔 gradient ascent를 사용.  
+<img src="https://user-images.githubusercontent.com/59794238/93793053-48bbe980-fc71-11ea-8219-0e58a445be25.png" width="50%"></img>  
+*Convolutional Architecture의 guidline에 따라 sample을 정리하면 GAN이 더 잘 Generate.  
+<img src="https://user-images.githubusercontent.com/59794238/93793040-43f73580-fc71-11ea-858c-1dc8220d4184.png" width="50%"></img>  
+</br>
 
+## Lecture 14 | Generative Models
 
