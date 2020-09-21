@@ -211,5 +211,14 @@ gradient descent: slope를 따라 loss가 최소가 되는 W 찾는 방법
 <img src="https://user-images.githubusercontent.com/59794238/93793040-43f73580-fc71-11ea-858c-1dc8220d4184.png" width="50%"></img>  
 </br>
 
-## Lecture 14 | Generative Models
+## Lecture 14 | Deep Reinforcement Learning
+#### Reinforcement Learning: Agent가 action을 하면 Env가 reward, state 정보를 제공하는 구조
+<img src="https://user-images.githubusercontent.com/59794238/93796254-8c185700-fc75-11ea-958e-bf666a25da9c.png" width="50%"></img>  
+*Markov Property: 과거, 미래 state는 현재 state와 완전히 independent하고 현재 state에서 다음 state로 갈 확률은 항상 같다는 가정. Markov Decision Process의 간단한 예에서는 성공했을 때 reward를 높게 하여 해결.  
+*Policy function에 따라 Agent가 state에 따른 action을 결정하게 되는데, 이 function의 policy pi를 학습하는 것이 목적.   
+*Q-value function: state, action, reward 정보를 바탕으로 미래의 reward 예상 (감가율이 적용되어 현재의 reward 비중이 이전의 reward 비중보다 큼) Bellman equation을 통해 최적의 Q-value function을 찾는다.  
+*그런데 최적화 과정이 scalable 하지 않아, deep neural network를 통해 Q-value를 근사한다. Forward pass에서는 학습시켜 벨만 방정식의 오차를 최소로 하고, backward pass는 계산한 손실을 기반으로 파라미터를 업데이트.  
+*연속적인 sample보다 상관관계가 적은 sample 사용하는 것이 학습에 효과적  
+*Q-learning은 모든 state, action 결과를 학습해야 한다는 단점이 있었는데, Policy gradient를 사용하여 해결. 이 방법은 내부 action을 확인할 수 없다는 문제(분산이 크다)가 있는데, baseline을 이용하여 이를 해결하였다. (임의의 baseline을 기준으로 reward를 양수, 음수로 처리하는 방법) - Actor(Policy)-Critic(Q-function) Algorithm  
+*Recurrent Attention Model(RAM): 이미지 일부에 대한 분포를 추출하고 NN에 통과시키는 과정을 반복하여 classification하는 방법  
 
