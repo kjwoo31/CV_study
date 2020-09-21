@@ -175,19 +175,20 @@ gradient descent: slope를 따라 loss가 최소가 되는 W 찾는 방법
 </br>
 
 ## Lecture 12 | Visualizing and Understanding
-#### Understanding layers
-*First layer를 통해 weight of filter 시각화. (AlexNet의 첫 layer는 oriented edge, opposing colors 파악)
-*Last layer (FC layer)의 feature space에 대해 L2 Nearest neighbors/t-SNE(Principle Component Analysis 발전)를 하여 learned feature space가 어떤지 확인 가능 - 차원 축소 효과도 있다
+#### Understanding layers  
+*First layer를 통해 weight of filter 시각화. (AlexNet의 첫 layer는 oriented edge, opposing colors 파악)  
+*Last layer (FC layer)의 feature space에 대해 L2 Nearest neighbors/t-SNE(Principle Component Analysis 발전)를 하여 learned feature space가 어떤지 확인 가능 - 차원 축소 효과도 있다  
 #### 중간 layer
-1) Visualizing Activation: weight를 시각화한 것은 해석하기 어렵지만 activation을 시각화하는 것은 해석 가능한 경우가 있음. Feature map은 계층적인 응답을 보이고 그룹화된다, 높은 layer에서 변화가 크다.
-2) Maximally Activating Patches: 이미지를 돌린 후, 선택된 채널의 value를 기록하고 최대 activation에 해당하는 이미지 패치를 시각화
-3) Occlusion(폐쇄) Experiments: 이미지 특정 부분을 마스크하고 마스크 위치에서 확률의 히트맵을 그린다. 그 부분이 중요한 부분일수록 network score가 극단적으로 변할 것이라는 아이디어에서 착안.
-4) Saliency Maps: 픽셀에 대해 class score의 gradient를 계산하고 절댓값, RGB 채널 최대로 취하는 방식. 이미지 픽셀이 classification에 얼마나 중요한지 확인할 수 있고, semantic segmentation에 사용되기도 함.
-5) Backprop: DeConv를 이용하여 Positive influence를 backprop하여 중요한 뉴런의 Gradient를 시각화
-*Gradient Ascent: Neuron Value가 최대인, 모델이 관심을 갖는 부분의 위치를 찾아 시각화 (Regularization Term을 통해 자연스럽게 보이게 함)
-*DeepDream: feature를 증폭시켜 input 이미지와 결합해 비슷한 형태의 이미지를 만들어내는 알고리즘 (image, layer 선택 후 forward, Layer에서 Activation 값과 같은 gradient 설정, backward, update image 반복)
-*Feature Inversion: 네트워크가 깊어지면 점점 feature를 잃어감. 주어진 feature vector와 일치하는 이미지를 찾아 멈춰야함.
-*기타: 같은 texture의 더 큰 이미지를 생성하는 Neural Texture Synthesis, 비슷한 스타일의 그림을 만드는 Neural Style Transfer
+1) Visualizing Activation: weight를 시각화한 것은 해석하기 어렵지만 activation을 시각화하는 것은 해석 가능한 경우가 있음. Feature map은 계층적인 응답을 보이고 그룹화된다, 높은 layer에서 변화가 크다.  
+2) Maximally Activating Patches: 이미지를 돌린 후, 선택된 채널의 value를 기록하고 최대 activation에 해당하는 이미지 패치를 시각화  
+3) Occlusion(폐쇄) Experiments: 이미지 특정 부분을 마스크하고 마스크 위치에서 확률의 히트맵을 그린다. 그 부분이 중요한 부분일수록 network score가 극단적으로 변할 것이라는 아이디어에서 착안.  
+4) Saliency Maps: 픽셀에 대해 class score의 gradient를 계산하고 절댓값, RGB 채널 최대로 취하는 방식. 이미지 픽셀이 classification에 얼마나 중요한지 확인할 수 있고, semantic segmentation에 사용되기도 함.   
+5) Backprop: DeConv를 이용하여 Positive influence를 backprop하여 중요한 뉴런의 Gradient를 시각화  
+
+*Gradient Ascent: Neuron Value가 최대인, 모델이 관심을 갖는 부분의 위치를 찾아 시각화 (Regularization Term을 통해 자연스럽게 보이게 함)  
+*DeepDream: feature를 증폭시켜 input 이미지와 결합해 비슷한 형태의 이미지를 만들어내는 알고리즘 (image, layer 선택 후 forward, Layer에서 Activation 값과 같은 gradient 설정, backward, update image 반복)  
+*Feature Inversion: 네트워크가 깊어지면 점점 feature를 잃어감. 주어진 feature vector와 일치하는 이미지를 찾아 멈춰야함.  
+*기타: 같은 texture의 더 큰 이미지를 생성하는 Neural Texture Synthesis, 비슷한 스타일의 그림을 만드는 Neural Style Transfer  
 
 
 
