@@ -7,3 +7,4 @@
 
 ## Coding
 1. Pytorch tutorial ([tutorial link](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html))
+2. Tensorflow, Pytorch 응용 ([png data](https://www.kaggle.com/jidhumohan/mnist-png) 전처리, 학습 과정 확인, model 저장)
