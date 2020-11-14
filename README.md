@@ -1,5 +1,5 @@
-# Computer Vision study
-> 컴퓨터 비전 관련 공부를 하고 정리한 내용
+# Deeplearning study
+> Deeplearning 관련 공부를 하고 정리한 내용
 
 ## lecture
 1. 모두를 위한 딥러닝 ([youtube link](https://www.youtube.com/watch?v=BS6O0zOGX4E&list=PLlMkM4tgfjnLSOjrEJN31gZATbcj_MpUm&index=1))
