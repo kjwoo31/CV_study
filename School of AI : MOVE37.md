@@ -21,9 +21,9 @@ Descrete: 고정된 범위의 음이 아닌 수만 허용. action의 경우, 0 �
 Box: n차원의 숫자 배열. env.observation_space.high, .low로 Box의 경계값 확인 가능.  
 - [Gym 환경 리스트](https://gym.openai.com/envs/#classic_control) (print(envs.registry.all()))
 
-3. **Google Dopamin**: 
-- 
-
+3. **[Google Dopamin](https://github.com/llSourcell/Google_Dopamine_LIVE/blob/master/Google_Dopamine_(LIVE)%20(1).ipynb)**: OpenAI Gym과 Tensorflow를 합친 프레임워크.   
+- Deep Q: Atari 게임들을 마스터할 수 있는 딥마인드의 알고리즘이다.  
+replay memory: 모든 상태, 행동, 보상을 학습하는 동안 큰 배열에 저장, 대규모 분산 학습, 분산 모델링 방법의 3가지로 구성됨  
 
 </br>
 
