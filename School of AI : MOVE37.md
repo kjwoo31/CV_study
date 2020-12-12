@@ -33,7 +33,7 @@ replay memory: 모든 상태, 행동, 보상을 학습하는 동안 큰 배열�
 - Policy Iteration: 정책 평가와 정책 향상 반복. 임의의 정책에서 시작하고 반복하여 각 칸의 가치표, 정책을 갱신. 정책과 가치표가 변동이 없을 때까지 반복한다.  
 - Value Iteration: 가치표를 만든 후 정책 만듦. 각 칸의 value를 정확하게 계산하여 각 상태의 최적 정책을 구함. 더 많은 연산 비용이 든다. (최적화 원칙: 정책이 상태 s에서 최적 가치를 가지면 다음 상태도 s로부터 출발했을 때에만 최적 가치를 갖는다.)  
 
-[Kaggle 해보기](https://www.kaggle.com/c/two-sigma-financial-modeling/overview/description)
+기타) [Kaggle 해보기](https://www.kaggle.com/c/two-sigma-financial-modeling/overview/description)
 
 </br>
 
