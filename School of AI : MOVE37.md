@@ -73,3 +73,17 @@ fist visit Monte Carlo: 하나의 에피소드에서 같은 상태를 여러 번
 ## Lecture 6 | Deep Reinforcement Learning
 1. **Deep Q Learning**: Q table의 state-action 연관성을 신경망을 사용해 근사하는 방법.
 - state-action 쌍이 너무 많아지면 이들을 저장하고 Q 함수를 **근사**하는 것이 어려워짐. (일반적인 함수로 표현 어려움) 따라서, 모든 state-action 쌍을 저장했던 방식을 **신경망**으로 state-action 쌍에서 Q 값을 근사하는 방법으로 변경. 
+2. **Dueling DQN(DDQN)**
+- DQN에서는 계산 흐름이 하나였지만 DDQN에서는 value, advantage(특정 행동이 다른 행동에 비해 얼마나 좋은지 알려주는 함수)를 각각 계산하여 마지막 층에서 합친다. (Q(s,a)=A(s,a)+V(s))  
+3. 신경망
+- 순방향 신경망: 다층 퍼셉트론, 네크워크를 연결된 노드의 그래프로 표현  
+- 순환 신경망: RNN, hidden state에 과거 상태를 저장하고 입력값과 hidden state를 종합하여 출력  
+- BPTT(Backpropagation Through Time): 경사도가 너무 크거나 작아질 수 있다. 이를 해결하기 위해 LSTM(hidden state뿐만 아니라 셀 상태도 저장), Gated Recurrent Unit 활용  
+
+</br>
+
+## Lecture 7 | Policy Based Methods
+
+
+
+
