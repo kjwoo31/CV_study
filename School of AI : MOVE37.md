@@ -41,7 +41,7 @@ replay memory: 모든 상태, 행동, 보상을 학습하는 동안 큰 배열�
 1. **Model Free RL**: action의 결과를 알 수 없을 때(transition model과 reward function 중 하나라도 모를 때)  
 - **Monte Carlo Method**: 무작위로 샘플을 뽑아서 수치적인 결과를 얻는 방법 (경험적, Dynamic Planning은 가능한 모든 상태를 여러 번 순환.)   
 fist visit Monte Carlo: 하나의 에피소드에서 같은 상태를 여러 번 방문할 경우, 첫 번째로 방문한 상태만 고려함.  
--  **Q Learning**: Q(s,a)는 상태 s에서 행동 a를 취했을 때 value를 다음 상태의 Q값을 이용(벨만 방정식)해 나타낸 것이다. 반복을 통해 state-action 쌍에 대한 reward가 최대인 Q함수를 찾아 선택한다. (Value function의 max가 되야 하는 부분이 Q(= R(s,a)+γV(s')))  
+-  **Q Learning**(Q:action-state 쌍의 quality): Q(s,a)는 상태 s에서 행동 a를 취했을 때 value를 다음 상태의 Q 값을 이용(벨만 방정식)해 나타낸 것이다. 반복을 통해 state-action 쌍에 대한 reward가 최대인 Q 함수를 찾아 선택한다. (Value function의 max가 되야 하는 부분이 Q(= R(s,a)+γV(s')))  
 2. **Exploration vs Exploitation**: RL할 때, 탐색을 많이 할 지, 기존 지식을 많이 활용할지 딜레마를 겪는다. 이 탐색과 이용의 균형을 찾을 때 가장 높은 보상을 얻는다.  
 - ε-greedy: ε은 무작위한 행동을 취하는 확률로 ε(탐색)를 증가시키는 전략이다. 반대로, 기존 지식을 최대한 활용(이용)하는 전략을 greedy라고 한다.  
 
@@ -71,3 +71,5 @@ fist visit Monte Carlo: 하나의 에피소드에서 같은 상태를 여러 번
 </br>
 
 ## Lecture 6 | Deep Reinforcement Learning
+1. **Deep Q Learning**: Q table의 state-action 연관성을 신경망을 사용해 근사하는 방법.
+- state-action 쌍이 너무 많아지면 이들을 저장하고 Q 함수를 **근사**하는 것이 어려워짐. (일반적인 함수로 표현 어려움) 따라서, 모든 state-action 쌍을 저장했던 방식을 **신경망**으로 state-action 쌍에서 Q 값을 근사하는 방법으로 변경. 
