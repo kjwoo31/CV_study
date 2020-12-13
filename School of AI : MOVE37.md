@@ -83,7 +83,12 @@ fist visit Monte Carlo: 하나의 에피소드에서 같은 상태를 여러 번
 </br>
 
 ## Lecture 7 | Policy Based Methods
+1. Meta Learning: 높은 단계의 AI가 낮은 단계의 AI 혹은 그들 여러 개를 최적화하는 것
+- Neuroevolution: 다윈의 진화론처럼 여러 개의 알고리즘을 형성, 점수를 매겨 높은 점수의 멤버만 남기고 그 멤버의 특징을 갖는 다른 멤버를 번식한다. 이 과정을 반복하면 환경에 적합한 알고리즘만 남게 된다. ex. 이미지 분류 AmoebaNet
+2. 정책 검색 알고리즘
 
+</br>
 
+## Lecture 8 | Policy Gradient Methods
 
 
