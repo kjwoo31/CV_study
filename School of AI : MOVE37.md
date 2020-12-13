@@ -61,3 +61,11 @@ fist visit Monte Carlo: 하나의 에피소드에서 같은 상태를 여러 번
 </br>
 
 ## Lecture 5 | RL in Continuous Spaces
+1. **Augmented Random Search**(ARS)  
+2. **Kalman Filter**: 간접적이고 불확실한 측정치로 시스템의 상태를 추정할 때 사용하는 추정 알고리즘이다.   
+- 이전 상태의 측정치로부터 현재 상태를 예측한 값과 현재 상태의 측정치를 종합하여 현재 상태를 추정.  
+- 자율주행차에서 센서 융합할 때, 각 센서에 대해 칼만 필터를 적용하여 예측 정확도 향상  
+
+기타) [연속 행동 공간 관련 알고리즘](https://www.edwith.org/move37/lecture/59807/)
+
+## Lecture 6 | Deep Reinforcement Learning
