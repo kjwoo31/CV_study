@@ -50,3 +50,14 @@ fist visit Monte Carlo: 하나의 에피소드에서 같은 상태를 여러 번
 </br>
 
 ## Lecture 4 | Model Free Learning
+1. **시간차 학습**
+- 파를로프 실험: 자극에 대한 조건 반응 (호루라기 소리를 들을 때마다 개는 음식을 기대하고 침을 흘림), 동물이 기대한 값과 실제로 받은 값의 차이를 예측 오차라고 한다.
+=> 연상학습이론의 기초를 형성함.
+- 강화학습에서 state = 자극, state를 통해 잠재적 reward를 예측한다. 실제 반환값에 학습률 α만큼 이전의 가치를 더함 (V(s)=(1-α)V(s)+α[r+γV(s')])
+2. on policy, off policy
+- on policy: 최근 policy에 기반하여 현재의 최선의 행동을 취하면 수렴
+- off policy: 무작위로 행동을 취하여 기록된 데이터로 학습하여 수렴.  ex. Q learning
+
+</br>
+
+## Lecture 5 | RL in Continuous Spaces
