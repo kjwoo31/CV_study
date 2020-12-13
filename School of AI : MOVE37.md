@@ -68,4 +68,6 @@ fist visit Monte Carlo: 하나의 에피소드에서 같은 상태를 여러 번
 
 기타) [연속 행동 공간 관련 알고리즘](https://www.edwith.org/move37/lecture/59807/)
 
+</br>
+
 ## Lecture 6 | Deep Reinforcement Learning
