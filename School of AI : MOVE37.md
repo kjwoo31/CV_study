@@ -7,7 +7,7 @@
 state(S): 현재 상태, action(A): 가능한 모든 결정들 (목표를 이루기 위한 일련의 행동들을 모아 policy라 함.), model(T): 어떤 상태에서의 행동의 영향을 알려줌, reward(r): 행동에 대한 반응, γ: 현재의 보상과 미래의 보상 사이의 상대적인 중요도.    
 - Policy  
 Deterministic policy: 상태 값에 따라 행동 결정  
-Stochastic policy: 상태 s에서 확률적으로 a라는 행동을 취함 (a=𝝿(s))  
+Stochastic policy: 상태 s에서 확률적으로 a라는 행동을 취함 (a=π(s))  
 
 2. **Bellman Equation**: 현재 state의 value는 즉각 보상에 할인율을 곱한 뒤따르는 보상을 더한 것과 같다.   
 Bellman Expectation Equation : V(s)=R(s)+γV(s')  
