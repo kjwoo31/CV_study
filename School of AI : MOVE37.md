@@ -12,7 +12,7 @@ Stochastic policy: 상태 s에서 확률적으로 a라는 행동을 취함 (a=�
 2. **Bellman Equation**: 현재 state의 value는 즉각 보상에 할인율을 곱한 뒤따르는 보상을 더한 것과 같다.   
 Bellman Expectation Equation : V(s)=R(s)+γV(s')  
 Bellman Optimality Equation : V(s)=max_a(R(s,a)+γV(s'))  
-유도  
+유도)  
     1) state-value function : 누적 보상을 고려  
     ![image](https://user-images.githubusercontent.com/59794238/102096666-4e882c00-3e68-11eb-9036-6438c1378c9c.png)  
     2) action-value function (Q-function): action을 추가로 고려  
