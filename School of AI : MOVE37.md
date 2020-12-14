@@ -2,16 +2,25 @@
 
 ## Lecture 1 | Markov Decision Processes
   
-1. **Markov Chain Model**: 현재 진행 중인 상태는 딱 한 단계 전의 상태에만 의존한다는 전제(마르코브 성질) 하에, 두 단계의 관계인 Transition Matrix를 찾는 것    
-- 마르코브 결정 과정(MDP): **(S, A, T, r, γ)**   
+1. **Markov Chain Model**: 현재 진행 중인 상태는 딱 한 단계 전의 상태에만 의존한다는 전제(**Markov Property**) 하에, 두 단계의 관계인 Transition Matrix를 찾는 것    
+- 마르코브 결정 과정(MDP): Markov Property를 갖는 전이 확률로 의사결정하는 것. **(S, A, T, r, γ)**   
 state(S): 현재 상태, action(A): 가능한 모든 결정들 (목표를 이루기 위한 일련의 행동들을 모아 policy라 함.), model(T): 어떤 상태에서의 행동의 영향을 알려줌, reward(r): 행동에 대한 반응, γ: 현재의 보상과 미래의 보상 사이의 상대적인 중요도.    
 - Policy  
 Deterministic policy: 상태 값에 따라 행동 결정  
 Stochastic policy: 상태 s에서 확률적으로 a라는 행동을 취함 (a=𝝿(s))  
 
-2. **Bellman Equation**: 현재의 state에서 최적의 reward을 얻는 action을 하도록 하는 것   
-식: V(s)=max_a(R(s,a)+rV(s'))  
-최종 상태에서 recursive하게 reward를 계산하여 value가 높은 방향으로 이동  
+2. **Bellman Equation**: 현재 state의 value는 즉각 보상에 할인율을 곱한 뒤따르는 보상을 더한 것과 같다.   
+Bellman Expectation Equation : V(s)=R(s)+γV(s')  
+Bellman Optimality Equation : V(s)=max_a(R(s,a)+γV(s'))  
+유도  
+    1) state-value function : 누적 보상을 고려  
+    ![image](https://user-images.githubusercontent.com/59794238/102096666-4e882c00-3e68-11eb-9036-6438c1378c9c.png)  
+    2) action-value function (Q-function): action을 추가로 고려  
+    ![image](https://user-images.githubusercontent.com/59794238/102097903-d6bb0100-3e69-11eb-9529-e9d7e9d5bae8.png)  
+    3) 정책 고려  
+    ![image](https://user-images.githubusercontent.com/59794238/102097230-fef63000-3e68-11eb-8dac-668fa7aa65fc.png)  
+    ![image](https://user-images.githubusercontent.com/59794238/102098145-2ef20300-3e6a-11eb-82f2-e86112a085dc.png)  
+최종 상태에서 recursive하게 reward를 계산하여 value를 표시하고, value가 높아지는 방향으로 이동  
 
 과제) **OpenAI Gym**  
 - step 함수 : 각 행동이 환경에 어떤 영향을 미치는지 알려줌. (observation, reward, done, info = env.step(action))   
@@ -42,6 +51,8 @@ replay memory: 모든 상태, 행동, 보상을 학습하는 동안 큰 배열�
 - **Monte Carlo Method**: 무작위로 샘플을 뽑아서 수치적인 결과를 얻는 방법 (경험적, Dynamic Planning은 가능한 모든 상태를 여러 번 순환.)   
 fist visit Monte Carlo: 하나의 에피소드에서 같은 상태를 여러 번 방문할 경우, 첫 번째로 방문한 상태만 고려함.  
 -  **Q Learning** (Q:action-state 쌍의 quality): Q(s,a)는 상태 s에서 행동 a를 취했을 때 value를 다음 상태의 Q 값을 이용(벨만 방정식)해 나타낸 것이다. 반복을 통해 state-action 쌍에 대한 reward가 최대인 Q 함수를 찾아 선택한다. (Value function의 max가 되야 하는 부분이 Q(= R(s,a)+γV(s')))  
+
+
 2. **Exploration vs Exploitation**: RL할 때, 탐색을 많이 할 지, 기존 지식을 많이 활용할지 딜레마를 겪는다. 이 탐색과 이용의 균형을 찾을 때 가장 높은 보상을 얻는다.  
 - ε-greedy: ε은 무작위한 행동을 취하는 확률로 ε(탐색)를 증가시키는 전략이다. 반대로, 기존 지식을 최대한 활용(이용)하는 전략을 greedy라고 한다.  
 
