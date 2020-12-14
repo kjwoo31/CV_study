@@ -10,8 +10,8 @@ Deterministic policy: 상태 값에 따라 행동 결정
 Stochastic policy: 상태 s에서 확률적으로 a라는 행동을 취함 (a=π(s))  
 
 2. **Bellman Equation**: 현재 state의 value는 즉각 보상에 할인율을 곱한 뒤따르는 보상을 더한 것과 같다.   
-Bellman Expectation Equation : V(s)=R(s)+γV(s')  
-Bellman Optimality Equation : V(s)=max_a(R(s,a)+γV(s'))  
+- Bellman Expectation Equation : V(s)=R(s)+γV(s')  
+- Bellman Optimality Equation : V(s)=max_a(R(s,a)+γV(s'))  
 유도)  
     1) state-value function : 누적 보상을 고려  
     ![image](https://user-images.githubusercontent.com/59794238/102096666-4e882c00-3e68-11eb-9036-6438c1378c9c.png)  
@@ -51,13 +51,23 @@ replay memory(모든 상태, 행동, 보상을 학습하는 동안 큰 배열에
 
 ## Lecture 3 | Monte Carlo Methods
 1. **Model Free RL**: action의 결과를 알 수 없을 때(transition model과 reward function 중 하나라도 모를 때)  
-- **Monte Carlo Method**: 무작위로 샘플을 뽑아서 수치적인 결과를 얻는 방법 (경험적, Dynamic Planning은 가능한 모든 상태를 여러 번 순환.)   
-fist visit Monte Carlo: 하나의 에피소드에서 같은 상태를 여러 번 방문할 경우, 첫 번째로 방문한 상태만 고려함.  
--  **Q Learning** (Q:action-state 쌍의 quality): Q(s,a)는 상태 s에서 행동 a를 취했을 때 value를 다음 상태의 Q 값을 이용(벨만 방정식)해 나타낸 것이다. 반복을 통해 state-action 쌍에 대한 reward가 최대인 Q 함수를 찾아 선택한다. (Value function의 max가 되야 하는 부분이 Q(= R(s,a)+γV(s')))  
+2. **Monte Carlo Method**: 무작위로 state 집합 sample을 뽑아서 step별로 reward를 얻어 저장하고 terminal state에 도달하면 이를 바탕으로 state들의 value function을 찾는 방법  
 
-
-2. **Exploration vs Exploitation**: RL할 때, 탐색을 많이 할 지, 기존 지식을 많이 활용할지 딜레마를 겪는다. 이 탐색과 이용의 균형을 찾을 때 가장 높은 보상을 얻는다.  
-- ε-greedy: ε은 무작위한 행동을 취하는 확률로 ε(탐색)를 증가시키는 전략이다. 반대로, 기존 지식을 최대한 활용(이용)하는 전략을 greedy라고 한다.  
+경험적, Policy Iteration과 Value Iteration은 가능한 모든 상태를 순환한다는 점에서 다름   
+식) 여러 episode를 진행하며 얻는 return 값들의 산술 평균은 true value func.으로 근사할 수 있다.  
+![image](https://user-images.githubusercontent.com/59794238/102111638-040fab00-3e7a-11eb-929d-a1bac97cc9ad.png)  
+- First visit MC, Every Visit MC  
+First visit MC: 하나의 에피소드에서 같은 상태를 여러 번 방문할 경우, 첫 번째로 방문하였을 때의 return 값으로 계산  
+Every visit MC: 반대로 방문할 때마다 바뀐 return값으로 계산  
+-  **Q Learning** (Q:action-state 쌍의 quality): Q(s,a)는 상태 s에서 행동 a를 취했을 때 value를 다음 상태의 Q 값을 이용해 나타낸 것이다. 반복을 통해 state-action 쌍에 대한 총 reward가 최대인 Q 함수를 찾아 선택한다.  
+식) 벨만 방정식의 V를 Q로, Q(s,a) ~ R(s,a) + γQ'(s',a')   
+- **Exploration vs Exploitation**: RL할 때, 탐색을 많이 할 지, 기존 지식을 많이 활용할지 딜레마를 겪는다. 이 탐색과 이용의 균형을 찾을 때 가장 높은 보상을 얻는다.  
+ε-greedy: ε은 무작위한 행동을 취하는 확률로 ε(탐색)를 증가시키는 전략  
+greedy: 반대로, 기존 지식을 최대한 활용(이용)하는 전략   
+- Monte Carlo Control의 특징
+    1) state-value function은 model-based이기 때문에, action-value function (Q-function)을 사용하여(state뿐만 아니라 action 고려) **model의 정보가 function에** 다 담기게 한다.  
+    2) ε-greedy는 local optimum에 빠지는 것을 방지한다.  
+    3) Value Iteration에서는 value를 모두 estimate하고 난 후에 최적의 policy를 찾았는데, Q learning을 사용한 Monte Carlo Control에서는 매 episode마다 q를 estimate하고 policy improvment를 한다.  
 
 기타) TPU: 신경망의 행렬 연산을 위해 만들어진 반도체, 텐서 연산 ([활용](https://www.edwith.org/move37/lecture/59796/))  
 
