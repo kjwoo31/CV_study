@@ -32,15 +32,18 @@ Box: n차원의 숫자 배열. env.observation_space.high, .low로 Box의 경계
 
 3. **[Google Dopamin](https://github.com/llSourcell/Google_Dopamine_LIVE/blob/master/Google_Dopamine_(LIVE)%20(1).ipynb)**: OpenAI Gym과 Tensorflow를 합친 프레임워크.   
 - Deep Q: Atari 게임들을 마스터할 수 있는 딥마인드의 알고리즘이다.  
-replay memory: 모든 상태, 행동, 보상을 학습하는 동안 큰 배열에 저장, 대규모 분산 학습, 분산 모델링 방법의 3가지로 구성됨  
+replay memory(모든 상태, 행동, 보상을 학습하는 동안 큰 배열에 저장), 대규모 분산 학습, 분산 모델링 방법의 3가지로 구성됨  
 
 </br>
 
 ## Lecture 2 | Dynamic Programming
 1. **[Dynamic Programming](https://github.com/dennybritz/reinforcement-learning/tree/master/DP/)**: 완벽한 모델이 주어졌을 때, 최적 정책을 구하기 위해 사용할 수 있는 알고리즘의 집합   
 - 큰 문제를 작은 문제로 쪼갠 후, 재귀적으로 풀어나가며 해결. 계산량이 많고 완벽한 모델 필요함    
-- Policy Iteration: 정책 평가와 정책 향상 반복. 임의의 정책에서 시작하고 반복하여 각 칸의 가치표, 정책을 갱신. 정책과 가치표가 변동이 없을 때까지 반복한다.  
-- Value Iteration: 가치표를 만든 후 정책 만듦. 각 칸의 value를 정확하게 계산하여 각 상태의 최적 정책을 구함. 더 많은 연산 비용이 든다. (최적화 원칙: 정책이 상태 s에서 최적 가치를 가지면 다음 상태도 s로부터 출발했을 때에만 최적 가치를 갖는다.)  
+- Policy Iteration: 정책 평가와 정책 향상 반복. 임의의 정책에서 시작하고 반복하여 Bellman Optimality Equation에 대입하였을 때 improvement가 발생하면 갱신. 정책과 가치표가 변동이 없을 때까지 반복한다.  
+평가 방법)  
+![image](https://user-images.githubusercontent.com/59794238/102102915-ae360580-3e6f-11eb-8fbd-8d34b7bb2a83.png)  
+- Value Iteration: 모든 상태 s와 모든 행동 a에 대해 루프를 돈 후, Bellman Optimality Equation에 대입하여 최적의 policy를 찾는 과정. V(s)의 최대 변화값이 설정한 임계값보다 낮을 때까지 반복한다.  
+![image](https://user-images.githubusercontent.com/59794238/102102876-a37b7080-3e6f-11eb-998e-8d67e0f6b6f6.png)  
 
 기타) [Kaggle 해보기](https://www.kaggle.com/c/two-sigma-financial-modeling/overview/description)
 
@@ -67,7 +70,7 @@ fist visit Monte Carlo: 하나의 에피소드에서 같은 상태를 여러 번
 - 강화학습에서 state = 자극, state를 통해 잠재적 reward를 예측한다. 실제 반환값에 학습률 α만큼 이전의 가치를 더함 (V(s)=(1-α)V(s)+α[r+γV(s')])
 2. on policy, off policy
 - on policy: 최근 policy에 기반하여 현재의 최선의 행동을 취하면 수렴
-- off policy: 무작위로 행동을 취하여 기록된 데이터로 학습하여 수렴.  ex. Q learning
+- off policy: 무작위로 행동을 취하여 기록된 데이터로 학습하여 수렴. 에이전트가 자신의 행동이 환경에 미치는 영향에 대한 정보를 미리 알고 있을 때 사용. ex. Policy Iteration, Value Iteration  
 
 </br>
 
