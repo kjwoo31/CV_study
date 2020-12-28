@@ -4,7 +4,7 @@
 ## lecture
 1. 모두를 위한 딥러닝 ([youtube link](https://www.youtube.com/watch?v=BS6O0zOGX4E&list=PLlMkM4tgfjnLSOjrEJN31gZATbcj_MpUm&index=1))
 2. Stanford CS231n ([syllabus](http://cs231n.stanford.edu/2017/syllabus.html))
-3. RL Course by David Silver ([youtube link](https://www.youtube.com/watch?v=2pWv7GOvuf0&list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ))
+3. School of AI : MOVE37 ([link](https://www.edwith.org/move37/joinLectures/25196))
 
 ## Coding
 1. Pytorch tutorial ([tutorial link](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html))
