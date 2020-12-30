@@ -138,6 +138,7 @@ Inverse kinematics를 구현하는 방법으로, Gradient Descent 사용.
 1. **정책 경사 기법**: 정책을 직접 모델링, 최적화하는 방식  
 - 무작위 정책으로 시작 -> 환경에서 몇 가지 행동 추출 -> 행동을 취할 확률을 바꾼다 -> 보상이 기대한 것보다 크면 행동을 취할 확률을 높인다, 더 낮다면 확률을 낮춘다  
 - Q-Learning과의 차이점: 탐색/이용 균형을 고려할 필요가 없고 on policy다. 각 행동에 대한 기록인 Target Network가 필요 없다.  
+- DQN보다 선호되고, 액터-크리틱 방법에서 액터로 흔히 사용
 
 2. **REINFORCE algorithm** (몬테카를로 정책 경사): 1992년에 발표된 최초의 정책 경사 방법  
 - 에피소드 표본에 Monte Carlo Method로 추정한 보상에 따라 정책 매개 변수(θ)를 갱신하는 방법  
@@ -147,4 +148,17 @@ Inverse kinematics를 구현하는 방법으로, Gradient Descent 사용.
 3. **Evolved Policy Gradients** (EPG, 진화된 정책 경사): 메타러닝 방법 - [논문](https://storage.googleapis.com/epg-blog-data/epg_2.pdf)
 - 두 개의 최적화 루프로 구성. **내부 루프**는 확률적 정책 하강법 (SGD)을 사용하여 외부 루프가 제안한 손실 함수에 대해 **에이전트의 정책을 최적화**한다. **외부 루프**는 내부 루프에서 얻은 누적 보상을 평가하고 더 높은 누적 보상을 얻는 새로운 손실 함수를 제안하기 위해 **진화 전략 (ES)으로 손실 함수의 매개변수를 조정**한다.  
 - 지역 최저점을 피할 수 있다.  
-- DQN보다 선호되고, 액터-크리틱 방법에서 액터로 흔히 사용
+</br>
+
+## Lecture 9 | Actor Critic Methods
+1. Actor Critic Method  
+- Actor: 현 환경 상태를 기반으로 행동을 함, Critic: 상태와 결과를 바탕으로 보상에 대한 중간 시그널을 만듦.  
+- **Advantage Actor Critic Algorithm** (A2C): 
+- 
+
+2. **Deep Deterministic Policy Gradients** (DDPG): Policy Gradient Method의 policy를 Actor로 하여, Actor Critic Method를 함께 사용하는 방법.  
+- **Experience replay buffer**에 에이전트의 학습 중 경험을 저장하고 무작위적으로 sampling하는 방법, **Target Network**를 만들어 목표 오류 값을 정한 후 학습 알고리즘을 정규화하는 방법으로 개선함.  
+
+기타) [추가 학습](https://www.edwith.org/move37/lecture/60015/)
+
+</br>
