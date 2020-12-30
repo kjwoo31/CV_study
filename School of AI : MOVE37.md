@@ -152,12 +152,21 @@ Inverse kinematics를 구현하는 방법으로, Gradient Descent 사용.
 
 ## Lecture 9 | Actor Critic Methods
 1. Actor Critic Method  
-- Actor: 현 환경 상태를 기반으로 행동을 함, Critic: 상태와 결과를 바탕으로 보상에 대한 중간 시그널을 만듦.  
-- **Advantage Actor Critic Algorithm** (A2C): 
-- 
+- Actor: 현 환경 상태를 기반으로 행동을 함, Critic: 상태와 결과를 바탕으로 보상에 대한 중간 시그널을 만듦. (현 상태의 가치를 반환)  
+- **Advantage Actor Critic Algorithm** (A2C): advantage는 해당 상태의 기댓값보다 높으면 보상을 준다. (A(S, A) = Q(S, A) - V(S)) Advantage로 정책의 경사를 조정한다.  
+- **Asynchronous Advantage Actor Critic Algorithm** (A3C): 정책 경사는 현재 정책에서 얻어진 데이터를 기반으로 학습한다. 이때, 학습 데이터를 독립적이고 동일하게 분포(IID)시키기 위해 여러 개의 환경을 병렬적으로 실행하는 방법.  
+- **Continuous Action Space**에서 Actor Critic을 사용하는 방법
+    1) 각각의 연속 동작의 평균 μ와 표준 편차 σ를 출력해야 한다.  
+    2) negative log function을 loss function으로 사용, entropy 함수 수정  
 
 2. **Deep Deterministic Policy Gradients** (DDPG): Policy Gradient Method의 policy를 Actor로 하여, Actor Critic Method를 함께 사용하는 방법.  
 - **Experience replay buffer**에 에이전트의 학습 중 경험을 저장하고 무작위적으로 sampling하는 방법, **Target Network**를 만들어 목표 오류 값을 정한 후 학습 알고리즘을 정규화하는 방법으로 개선함.  
+
+3. **Proximal Policy Optimization** (PPO)  
+- 기존 Actor Critic 문제점: Hyperparameter tuning, Outlier의 영향을 많이 받는다. -> 학습을 좀 더 매끄럽게 만들어 해결한 것이 PPO  
+    1) Generalized Advantage Estimation (GAE): 보상의 손실을 줄여 학습을 보다 부드럽고 안정적이게 만듦. 분산을 최소화하는 Advantage와 반환값을 계산하는 방법.  
+    2) Surrogate Policy Loss: P_t/P_t-1 * advantage로, 점진적인 policy 업데이트가 가능해짐.  
+    3) Mini Batch Update: 경험값들이 무작위한 Mini Batch로 나뉨.  
 
 기타) [추가 학습](https://www.edwith.org/move37/lecture/60015/)
 
