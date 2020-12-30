@@ -113,8 +113,9 @@ Inverse kinematics를 구현하는 방법으로, Gradient Descent 사용.
 ## Lecture 6 | Deep Reinforcement Learning
 1. **Deep Q Learning**: Q table의 state-action 연관성을 신경망을 사용해 근사하는 방법.
 - state-action 쌍이 너무 많아지면 이들을 저장하고 Q 함수를 **근사**하는 것이 어려워짐. (일반적인 함수로 표현 어려움) 따라서, 모든 state-action 쌍을 저장했던 방식을 **신경망**으로 state-action 쌍에서 Q 값을 근사하는 방법으로 변경. 
+- OpenAI Gym Wrapper: 정해진 행동을 실행하고 데이터 가공하는 역할. (함수랑 비슷)  
 2. **Dueling DQN(DDQN)**
-- DQN에서는 계산 흐름이 하나였지만 DDQN에서는 value, advantage(특정 행동이 다른 행동에 비해 얼마나 좋은지 알려주는 함수)를 각각 계산하여 마지막 층에서 합친다. (Q(s,a)=A(s,a)+V(s))  
+- DQN에서는 계산 흐름이 하나였지만 DDQN에서는 **value**(특정 상태에 있는 것이 얼마나 좋은지 알려주는 함수), **advantage**(특정 행동이 다른 행동에 비해 얼마나 좋은지 알려주는 함수)를 **각각 계산**하여 마지막 층에서 합친다. (Q(s,a)=A(s,a)+V(s))  
 3. 신경망
 - 순방향 신경망: 다층 퍼셉트론, 네크워크를 연결된 노드의 그래프로 표현  
 - 순환 신경망: RNN, hidden state에 과거 상태를 저장하고 입력값과 hidden state를 종합하여 출력  
@@ -123,12 +124,27 @@ Inverse kinematics를 구현하는 방법으로, Gradient Descent 사용.
 </br>
 
 ## Lecture 7 | Policy Based Methods
-1. Meta Learning: 높은 단계의 AI가 낮은 단계의 AI 혹은 그들 여러 개를 최적화하는 것
-- Neuroevolution: 다윈의 진화론처럼 여러 개의 알고리즘을 형성, 점수를 매겨 높은 점수의 멤버만 남기고 그 멤버의 특징을 갖는 다른 멤버를 번식한다. 이 과정을 반복하면 환경에 적합한 알고리즘만 남게 된다. ex. 이미지 분류 AmoebaNet
-2. 정책 검색 알고리즘
-
+1. Meta Learning: 높은 단계의 AI가 낮은 단계의 AI 혹은 그들 여러 개를 최적화하는 것  
+- Neuroevolution: 다윈의 진화론처럼 여러 개의 알고리즘을 형성, 점수를 매겨 높은 점수의 멤버만 남기고 그 멤버의 특징을 갖는 다른 멤버를 번식한다. 이 과정을 반복하면 환경에 적합한 알고리즘만 남게 된다. ex. 이미지 분류 AmoebaNet  
+2. **정책 검색 알고리즘**: 마르코프 결정 과정을 해결하기 위해 정책을 직접 학습하는 방법  
+- 그 예로, 정책 경사 기법이 있다. **정책 경사 기법**은 **가치 함수를 학습**하고 이 가치를 사용해 주어진 마르코프 결정 과정을 위한 정책을 학습한다. 유사하게, **액터 크리틱 기법** 또한 정책 검색 알고리즘의 하위분류다. 정책 경사와 매우 비슷하지만 **추정한 가치 함수로 정책을 비교하여 분산을 줄인다.**  
+- Q-러닝, Fitted-Q, LSTD-Q 등은 행동-검색 알고리즘. 각 상태에 대한 행동(혹은 가치 함수 근사를 다룰 때는 특성 벡터)을 최대화하여 최적 정책을 찾기 때문이다.  
+- Policy Iteration과의 차이점: 정책 검색은 정책 공간에서 최적 정책을 찾는다.  
+- 장점: 더 좋은 수렴성(가치 기반 방법보다 매 스텝 정책이 부드럽게 갱신), 가능한 행동이 무수히 많은 고차원 행동 공간에서 유용, 확률론적인 정책 학습 가능 (탐색/이용 균형과 perceptual aliasing 문제를 고려하지 않아도 된다)  
+- 단점: 많은 상황에서 전역 최적점이 아닌 지역 최적점에 수렴  
 </br>
 
 ## Lecture 8 | Policy Gradient Methods
+1. **정책 경사 기법**: 정책을 직접 모델링, 최적화하는 방식  
+- 무작위 정책으로 시작 -> 환경에서 몇 가지 행동 추출 -> 행동을 취할 확률을 바꾼다 -> 보상이 기대한 것보다 크면 행동을 취할 확률을 높인다, 더 낮다면 확률을 낮춘다  
+- Q-Learning과의 차이점: 탐색/이용 균형을 고려할 필요가 없고 on policy다. 각 행동에 대한 기록인 Target Network가 필요 없다.  
 
+2. **REINFORCE algorithm** (몬테카를로 정책 경사): 1992년에 발표된 최초의 정책 경사 방법  
+- 에피소드 표본에 Monte Carlo Method로 추정한 보상에 따라 정책 매개 변수(θ)를 갱신하는 방법  
+- 보상 증가(REward Increment) = 음이 아닌 인자(Nonnegative Factor) x 오프셋 강화(Offset Reinforcement) x 특성 적격성(Characteristic Eligibility)  
+![image](https://user-images.githubusercontent.com/59794238/103341179-88446e00-4ac9-11eb-8653-63f76a56d0c5.png)  
 
+3. **Evolved Policy Gradients** (EPG, 진화된 정책 경사): 메타러닝 방법 - [논문](https://storage.googleapis.com/epg-blog-data/epg_2.pdf)
+- 두 개의 최적화 루프로 구성. **내부 루프**는 확률적 정책 하강법 (SGD)을 사용하여 외부 루프가 제안한 손실 함수에 대해 **에이전트의 정책을 최적화**한다. **외부 루프**는 내부 루프에서 얻은 누적 보상을 평가하고 더 높은 누적 보상을 얻는 새로운 손실 함수를 제안하기 위해 **진화 전략 (ES)으로 손실 함수의 매개변수를 조정**한다.  
+- 지역 최저점을 피할 수 있다.  
+- DQN보다 선호되고, 액터-크리틱 방법에서 액터로 흔히 사용
