@@ -86,7 +86,7 @@ greedy: 반대로, 기존 지식을 최대한 활용(이용)하는 전략
 - 시간의 경과에 따라 값이 줄어드는 adaptive epsilon, adaptive learning rate 사용.
 
 3. on policy, off policy
-- on policy: 정해진 policy로 행동. (Q Table에 따라 현재의 최선의 행동을 취한다.) 계속해서 모델 update하며 수렴.  
+- on policy: 정해진 policy로 행동. 계속해서 모델 update하며 수렴.  
 - off policy: 무작위로 행동을 취하여 기록된 데이터로 학습하여 수렴. -> Q Learning  
 
 </br>
