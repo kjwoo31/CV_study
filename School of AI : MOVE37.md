@@ -112,7 +112,7 @@ Inverse kinematics를 구현하는 방법으로, Gradient Descent 사용.
 
 ## Lecture 6 | Deep Reinforcement Learning
 1. **Deep Q Learning**: Q table의 state-action 연관성을 신경망을 사용해 근사하는 방법.
-- state-action 쌍이 너무 많아지면 이들을 저장하고 Q 함수를 **근사**하는 것이 어려워짐. (일반적인 함수로 표현 어려움) 따라서, 모든 state-action 쌍을 저장했던 방식을 **신경망**으로 state-action 쌍에서 Q 값을 근사하는 방법으로 변경. 
+- state-action 쌍이 너무 많아지면 이들을 저장하고 Q 함수를 근사하는 것이 어려워짐. (일반적인 함수로 표현 어려움) 따라서, 모든 state-action 쌍을 저장했던 방식을 **신경망**으로 state-action 쌍에서 Q 값을 근사하는 방법으로 변경. 
 - OpenAI Gym Wrapper: 정해진 행동을 실행하고 데이터 가공하는 역할. (함수랑 비슷)  
 2. **Dueling DQN(DDQN)**
 - DQN에서는 계산 흐름이 하나였지만 DDQN에서는 **value**(특정 상태에 있는 것이 얼마나 좋은지 알려주는 함수), **advantage**(특정 행동이 다른 행동에 비해 얼마나 좋은지 알려주는 함수)를 **각각 계산**하여 마지막 층에서 합친다. (Q(s,a)=A(s,a)+V(s))  
