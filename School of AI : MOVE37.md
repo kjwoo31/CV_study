@@ -155,7 +155,7 @@ Inverse kinematics를 구현하는 방법으로, Gradient Descent 사용.
 - Actor: 현 환경 상태를 기반으로 행동을 함, Critic: 상태와 결과를 바탕으로 보상에 대한 중간 시그널을 만듦. (현 상태의 가치를 반환)  
 - **Advantage Actor Critic Algorithm** (A2C): advantage는 해당 상태의 기댓값보다 높으면 보상을 준다. (A(S, A) = Q(S, A) - V(S)) Advantage로 정책의 경사를 조정한다.  
 - **Asynchronous Advantage Actor Critic Algorithm** (A3C): 정책 경사는 현재 정책에서 얻어진 데이터를 기반으로 학습한다. 이때, 학습 데이터를 독립적이고 동일하게 분포(IID)시키기 위해 여러 개의 환경을 병렬적으로 실행하는 방법.  
-- **Continuous Action Space**에서 Actor Critic을 사용하는 방법
+- **Continuous Action Space**에서 Actor Critic을 사용하는 방법 (확률값이 아닌 distribution으로 변경)
     1) 각각의 연속 동작의 평균 μ와 표준 편차 σ를 출력해야 한다.  
     2) negative log function을 loss function으로 사용, entropy 함수 수정  
 
