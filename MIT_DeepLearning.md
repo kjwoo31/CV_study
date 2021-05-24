@@ -2,36 +2,51 @@
 
 ## Lecture 1 | Introduction to Deep Learning
   
-1. **Markov Chain Model**: 현재 진행 중인 상태는 딱 한 단계 전의 상태에만 의존한다는 전제(**Markov Property**) 하에, 두 단계의 관계인 Transition Matrix를 찾는 것    
-- 마르코브 결정 과정(MDP): Markov Property를 갖는 전이 확률로 의사결정하는 것. **(S, A, T, r, γ)**   
-state(S): 현재 상태, action(A): 가능한 모든 결정들 (목표를 이루기 위한 일련의 행동들을 모아 policy라 함.), model(T): 어떤 상태에서의 행동의 영향을 알려줌, reward(r): 행동에 대한 반응, γ: 현재의 보상과 미래의 보상 사이의 상대적인 중요도.    
-- Policy  
-Deterministic policy: 상태 값에 따라 행동 결정  
-Stochastic policy: 상태 s에서 확률적으로 a라는 행동을 취함 (a=π(s))  
+1. Why Deep Learning?  
+- Deep Learning: Extract patterns from data using neural networks
+- Why now? : Big data, HW(GPU, parallelizable), SW
 
-2. **Bellman Equation**: 현재 state의 value는 즉각 보상에 할인율을 곱한 뒤따르는 보상을 더한 것과 같다.   
-- Bellman Expectation Equation : V(s)=R(s)+γV(s')  
-- Bellman Optimality Equation : V(s)=max_a(R(s,a)+γV(s'))  
-유도)  
-    1) state-value function : 누적 보상을 고려  
-    ![image](https://user-images.githubusercontent.com/59794238/102096666-4e882c00-3e68-11eb-9036-6438c1378c9c.png)  
-    2) action-value function (Q-function): action을 추가로 고려  
-    ![image](https://user-images.githubusercontent.com/59794238/102097903-d6bb0100-3e69-11eb-9529-e9d7e9d5bae8.png)  
-    3) 정책 고려  
-    ![image](https://user-images.githubusercontent.com/59794238/102097230-fef63000-3e68-11eb-8dac-668fa7aa65fc.png)  
-    ![image](https://user-images.githubusercontent.com/59794238/102098145-2ef20300-3e6a-11eb-82f2-e86112a085dc.png)  
-최종 상태에서 recursive하게 reward를 계산하여 value를 표시하고, value가 높아지는 방향으로 이동  
+2. Perceptron (single neuron): The structural building block of deep learning  
+<img src="https://user-images.githubusercontent.com/59794238/119324261-9a15f000-bcba-11eb-9478-e9584f64efa4.png" width="50%"></img>  
+1. input, weight의 dot product
+2. add bias
+3. Non-Linearity g : activation function, linear decision -> arbitrarily complex functions
+- Sigmoid Function: 0~1의 결과. 확률 관련 문제에 적합함.
+- Rectified Linear Unit(ReLU): 음수면 0, 양수면 z. 단순해서 많이 사용.
 
-과제) **OpenAI Gym**  
-- step 함수 : 각 행동이 환경에 어떤 영향을 미치는지 알려줌. (observation, reward, done, info = env.step(action))   
-observation: 환경에 대한 관찰 결과(카메라 위치, 로봇 각도, 속도, 보드 상태 등), reward: 이전의 행동으로 인한 보상, done: 환경 reset해야 하는지 알려줌, info: 디버깅, 진단을 위한 정보  
-- Space: 가능한 행동들과 관찰값의 형식을 알려줌 (env.action_space, env.observation_space)  
-Descrete: 고정된 범위의 음이 아닌 수만 허용. action의 경우, 0 혹은 1만 가능.  
-Box: n차원의 숫자 배열. env.observation_space.high, .low로 Box의 경계값 확인 가능.  
-- [Gym 환경 리스트](https://gym.openai.com/envs/#classic_control) (print(envs.registry.all()))
+3. Building Neural Network
+- Multi Output Perceptron
+	- **Dense** layer : Layer between input, output. Because all inputs are densely connected to all outputs.  
+	<img src="https://user-images.githubusercontent.com/59794238/119324345-ac902980-bcba-11eb-955b-2ec2873e633a.png" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/119324405-bca80900-bcba-11eb-984f-e9621af32d3e.png" width="40%"></img>  
 
-3. **[Google Dopamin](https://github.com/llSourcell/Google_Dopamine_LIVE/blob/master/Google_Dopamine_(LIVE)%20(1).ipynb)**: OpenAI Gym과 Tensorflow를 합친 프레임워크.   
-- Deep Q: Atari 게임들을 마스터할 수 있는 딥마인드의 알고리즘이다.  
-replay memory(모든 상태, 행동, 보상을 학습하는 동안 큰 배열에 저장), 대규모 분산 학습, 분산 모델링 방법의 3가지로 구성됨  
+- Deep Neural Network
+	- **Hidden** layer : Unlike input and output layer, they're hidden to some extent  
+	<img src="https://user-images.githubusercontent.com/59794238/119324744-21636380-bcbb-11eb-9fff-5df63ab4fc8a.png" width="40%"></img>  
+
+4. Applying Neural Network
+- Loss: The cost incurred from incorrect predictions. (Empirical Loss: Average of Loss)
+	- Softmax Cross Entropy Loss: Useful in binary classification. Cross entropy between two probability distributions.  
+	<img src="https://user-images.githubusercontent.com/59794238/119324898-48ba3080-bcbb-11eb-9dc1-36f534b8bfaf.png" width="50%"></img>  
+	- Mean Squared Error Loss: Predicting binary outputs. 분산.  
+	<img src="https://user-images.githubusercontent.com/59794238/119324935-54a5f280-bcbb-11eb-967e-a50bf2d59e76.png" width="50%"></img>  
+
+5. Training Neural Network
+- Loss가 최소인 weight를 찾는다.
+- Gradient Descent
+	<img src="https://user-images.githubusercontent.com/59794238/119324969-5d96c400-bcbb-11eb-89f0-7c58968b6c87.png" width="50%"></img>  
+	- Computing Gradients: Backpropagation (Use Chain Rule)  
+	<img src="https://user-images.githubusercontent.com/59794238/119325004-67202c00-bcbb-11eb-9050-f8a45d1553c3.png" width="50%"></img>  
+	- SGD: 전체 데이터 대신 batch of data points를 받아 compute gradient estimation
+	- 그 외에도 Adam, Adadelta, Adagrad, RMSProp이 있다.  
+	<img src="https://user-images.githubusercontent.com/59794238/119325162-959e0700-bcbb-11eb-9d9a-63b6a3b4a12d.png" width="50%"></img>
+
+6. Optimization
+- Setting the Learning Rate: 작으면 local minima에 갇히고 크면 overshoot. 따라서, 학습 과정에 따라 적응하는 Adaptive Learning Rate 사용.
+- Regularization: Model이 너무 복잡해지는 것을 막는 과정. 모델의 일반화, overfitting 방지.
+	- Dropout: During training, randomly set some activations to 0.  
+	<img src="https://user-images.githubusercontent.com/59794238/119325451-d5fd8500-bcbb-11eb-9fe8-65023d8e4c84.png" width="50%"></img>  
+	- Early Stopping: Stop training before we have a chance to overfit.  
+	<img src="https://user-images.githubusercontent.com/59794238/119325046-6f786700-bcbb-11eb-87be-8bf70afe3c49.png" width="50%"></img>  
+
 
 </br>
