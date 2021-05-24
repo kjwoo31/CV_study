@@ -7,10 +7,10 @@
 - Why now? : Big data, HW(GPU, parallelizable), SW
 
 2. Perceptron (single neuron): The structural building block of deep learning  
-<img src="https://user-images.githubusercontent.com/59794238/119324261-9a15f000-bcba-11eb-9478-e9584f64efa4.png" width="50%"></img>  
-1. input, weight의 dot product
-2. add bias
-3. Non-Linearity g : activation function, linear decision -> arbitrarily complex functions
+	<img src="https://user-images.githubusercontent.com/59794238/119324261-9a15f000-bcba-11eb-9478-e9584f64efa4.png" width="50%"></img>  
+	1) input, weight의 dot product
+	2) add bias
+	3) Non-Linearity g : activation function, linear decision -> arbitrarily complex functions
 - Sigmoid Function: 0~1의 결과. 확률 관련 문제에 적합함.
 - Rectified Linear Unit(ReLU): 음수면 0, 양수면 z. 단순해서 많이 사용.
 
@@ -32,7 +32,7 @@
 
 5. Training Neural Network
 - Loss가 최소인 weight를 찾는다.
-- Gradient Descent
+- Gradient Descent  
 	<img src="https://user-images.githubusercontent.com/59794238/119324969-5d96c400-bcbb-11eb-89f0-7c58968b6c87.png" width="50%"></img>  
 	- Computing Gradients: Backpropagation (Use Chain Rule)  
 	<img src="https://user-images.githubusercontent.com/59794238/119325004-67202c00-bcbb-11eb-9050-f8a45d1553c3.png" width="50%"></img>  
@@ -48,5 +48,6 @@
 	- Early Stopping: Stop training before we have a chance to overfit.  
 	<img src="https://user-images.githubusercontent.com/59794238/119325046-6f786700-bcbb-11eb-87be-8bf70afe3c49.png" width="50%"></img>  
 
-
 </br>
+
+## Lecture 2 | Recurrent Neural Networks
