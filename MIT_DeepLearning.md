@@ -44,10 +44,57 @@
 - Setting the Learning Rate: 작으면 local minima에 갇히고 크면 overshoot. 따라서, 학습 과정에 따라 적응하는 Adaptive Learning Rate 사용.
 - Regularization: Model이 너무 복잡해지는 것을 막는 과정. 모델의 일반화, overfitting 방지.
 	- Dropout: During training, randomly set some activations to 0.  
-	<img src="https://user-images.githubusercontent.com/59794238/119325451-d5fd8500-bcbb-11eb-9fe8-65023d8e4c84.png" width="50%"></img>  
+	<img src="https://user-images.githubusercontent.com/59794238/119325451-d5fd8500-bcbb-11eb-9fe8-65023d8e4c84.png" width="40%"></img>  
 	- Early Stopping: Stop training before we have a chance to overfit.  
-	<img src="https://user-images.githubusercontent.com/59794238/119325046-6f786700-bcbb-11eb-87be-8bf70afe3c49.png" width="50%"></img>  
+	<img src="https://user-images.githubusercontent.com/59794238/119325046-6f786700-bcbb-11eb-87be-8bf70afe3c49.png" width="40%"></img>  
 
 </br>
 
 ## Lecture 2 | Recurrent Neural Networks
+
+1. Sequence Modeling Applications - 데이터 간 연관성 존재. Add time component.  
+<img src="https://user-images.githubusercontent.com/59794238/119547009-87d9a600-bdcf-11eb-878d-ad0edd911bbd.png" width="30%"></img>  
+
+2. Neurons with recurrence  
+<img src="https://user-images.githubusercontent.com/59794238/119545633-003f6780-bdce-11eb-8202-9440e78ce1a3.PNG" width="30%"></img>  
+1) Make Feed-Forward Network for each time step.
+2) Apply recurrence relation to pass the past memory. (Connect Hidden States)
+
+3. Recurrent Neural Network (RNN)  
+<img src="https://user-images.githubusercontent.com/59794238/119545699-0fbeb080-bdce-11eb-8f2c-d0c01753b63a.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/119545881-409ee580-bdce-11eb-8d0f-13e84dea0adc.PNG" width="30%"></img>  
+- Unfolding RNNs : Re-use the **same weight matrices** at every time step. Sum all losses.  
+<img src="https://user-images.githubusercontent.com/59794238/119547156-b9527180-bdcf-11eb-8b80-9ae94408ce7f.png" width="40%"></img>  
+- Use Call function to make a forward pass (tf.kears.layers.simpleRNN(rnn_units))  
+<img src="https://user-images.githubusercontent.com/59794238/119545939-501e2e80-bdce-11eb-87c3-09050f084218.PNG" width="40%"></img>  
+
+4. Sequence Modeling: Design Criteria
+- Word prediction example: Encoding Language for a Neural Network (word -> vector)
+1. Handle Variable Sequence Lengths
+- Feed forward networks are not able to do this becuase they have inputs of fixed dimensionality.
+- But in RNN, differences in sequence lengths are just differences in the number of time steps.
+2. Long-Term Dependencies
+- We need information from the distant past to accurately predict the correct word.
+3. Capture Differences in Sequence Order : 순서가 중요함
+
+5. Backpropagation Through Time (BPTT)  
+<img src="https://user-images.githubusercontent.com/59794238/119546000-62986800-bdce-11eb-86a0-f9cf40892929.PNG" width="40%"></img>  
+각 timestep에 대해 backpropagation을 한 후 최근->처음으로 pass
+- Gradient Issues : During backpropagation, we repeat gradient computation! (W_hh backpropagation 반복)
+	- Many values > 1: exploding gradients -> Gradient clipping (threshold 설정)
+	- Many values < 1: vanishing gradients. 최종값은 Bias에 의지하고 Long-Term Dependencies 고려 X.
+		- Use ReLU : x>0에서 미분값이 항상 1. Prevents gradient shrinking.
+		- Parameter Initialization: Initialize weights, biases to zero.
+		- Gated Cells: Use a more **complex recurrent unit with gates** (LSTM)
+
+6. Long Short Term Memory (LSTM) Networks  
+<img src="https://user-images.githubusercontent.com/59794238/119546752-3af5cf80-bdcf-11eb-963b-facdb1167ce9.PNG" width="40%"></img>  
+- Information is added or removed through structures called gates.
+- Forget -> Store -> Update -> Output (Sigmoid gate로 조절)
+
+7. RNN Applications
+	1) Music Generation : Generate new composition.
+	2) Sentiment Classification : Use cross entropy about the output of sequence of words.
+	3) Machine Translation : Vector로 바꾸는 Encoder, 다른 언어로 바꾸는 Decoder 사용  
+		<img src="https://user-images.githubusercontent.com/59794238/119546781-434e0a80-bdcf-11eb-9988-53d308b439b8.PNG" width="30%"></img>  
+		- 데이터 양이 많아 발생하는 문제를 Attention을 사용하여 해결.  
+		<img src="https://user-images.githubusercontent.com/59794238/119546809-4c3edc00-bdcf-11eb-9ba2-45d716e4af5c.PNG" width="30%"></img>  
