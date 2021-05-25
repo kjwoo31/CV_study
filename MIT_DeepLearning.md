@@ -56,7 +56,7 @@
 <img src="https://user-images.githubusercontent.com/59794238/119547009-87d9a600-bdcf-11eb-878d-ad0edd911bbd.png" width="30%"></img>  
 
 2. Neurons with recurrence  
-<img src="https://user-images.githubusercontent.com/59794238/119545633-003f6780-bdce-11eb-8202-9440e78ce1a3.PNG" width="30%"></img>  
+	<img src="https://user-images.githubusercontent.com/59794238/119545633-003f6780-bdce-11eb-8202-9440e78ce1a3.PNG" width="30%"></img>  
 	1) Make Feed-Forward Network for each time step.
 	2) Apply recurrence relation to pass the past memory. (Connect Hidden States)
 
