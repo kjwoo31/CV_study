@@ -57,8 +57,8 @@
 
 2. Neurons with recurrence  
 <img src="https://user-images.githubusercontent.com/59794238/119545633-003f6780-bdce-11eb-8202-9440e78ce1a3.PNG" width="30%"></img>  
-1) Make Feed-Forward Network for each time step.
-2) Apply recurrence relation to pass the past memory. (Connect Hidden States)
+	1) Make Feed-Forward Network for each time step.
+	2) Apply recurrence relation to pass the past memory. (Connect Hidden States)
 
 3. Recurrent Neural Network (RNN)  
 <img src="https://user-images.githubusercontent.com/59794238/119545699-0fbeb080-bdce-11eb-8f2c-d0c01753b63a.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/119545881-409ee580-bdce-11eb-8d0f-13e84dea0adc.PNG" width="30%"></img>  
