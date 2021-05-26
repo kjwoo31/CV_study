@@ -98,3 +98,40 @@
 		<img src="https://user-images.githubusercontent.com/59794238/119546781-434e0a80-bdcf-11eb-9988-53d308b439b8.PNG" width="30%"></img>  
 		- 데이터 양이 많아 발생하는 문제를 Attention을 사용하여 해결.  
 		<img src="https://user-images.githubusercontent.com/59794238/119546809-4c3edc00-bdcf-11eb-9ba2-45d716e4af5c.PNG" width="30%"></img>  
+
+</br>
+
+## Lab 1 | Intro to TensorFlow; Music Generation
+1. TensorFlow
+1) 정의
+- Shape는 차원의 크기, rank는 차원의 수
+- tf.constant, tf.zeros 등으로 정의, 행렬과 같이 사용.
+2) Computation
+- tf.add, tf.matmul, tf.sigmoid 등 computation function 사용
+3) Neural network
+- __init__에는 model의 layer 정의, call에는 model의 forward pass 정의.
+- Dense layer 정의: tf.keras.layers.Dense(n_output_nodes, activation='sigmoid')
+- **Layer에는 output space의 차원을 적는다.**
+4) Automatic differentiation
+- with tf.GradientTape() as tape: # Initiate the gradient tape, 미분할 변수 사이 관계 정의
+- dy_dx = tape.gradient(y,x)
+
+2. Music Generation with RNNs
+1) Dependencies, Dataset - 817 song with 83 unique characters
+2) Process the dataset
+- Vectorize the text : char2idx = {u:i for i, u in enumerate(vocab)}
+- Create training examples and targets : break text into chunks of 'seq_length+1' (batch: 한 번 학습할 때 사용하는 데이터 배열)
+3) RNN  
+<img src="https://raw.githubusercontent.com/aamini/introtodeeplearning/2019/lab1/img/lstm_unrolled-01-01.png" width="50%"></img>  
+- Layer: Embedding(vector 변환), LSTM(RNN), Dense
+- get batch, pred = model(x)
+4) Training the Model: loss ant training operations
+- Adam optimizer 이용, optimizer에 gradient 값들 apply, loss return
+- batch를 골라 loss를 확인하고 update
+5) Generate music using the RNN model  
+<img src="https://raw.githubusercontent.com/aamini/introtodeeplearning/2019/lab1/img/lstm_inference.png" width="50%"></img>  
+- batch_size=1인 학습된 RNN model을 재활용하여 예측
+
+</br>
+
+## Lecture 3 | Convolutional Neural Networks
