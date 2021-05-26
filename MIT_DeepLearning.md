@@ -102,7 +102,7 @@
 </br>
 
 ## Lab 1 | Intro to TensorFlow; Music Generation
-1. TensorFlow
+### 1. TensorFlow
 1) 정의
 - Shape는 차원의 크기, rank는 차원의 수
 - tf.constant, tf.zeros 등으로 정의, 행렬과 같이 사용.
@@ -116,7 +116,7 @@
 - with tf.GradientTape() as tape: # Initiate the gradient tape, 미분할 변수 사이 관계 정의
 - dy_dx = tape.gradient(y,x)
 
-2. Music Generation with RNNs
+### 2. Music Generation with RNNs
 1) Dependencies, Dataset - 817 song with 83 unique characters
 2) Process the dataset
 - Vectorize the text : char2idx = {u:i for i, u in enumerate(vocab)}
