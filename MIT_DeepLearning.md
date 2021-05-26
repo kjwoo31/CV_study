@@ -135,3 +135,34 @@
 </br>
 
 ## Lecture 3 | Convolutional Neural Networks
+1. Learning Visual Features
+- Feature Extraction with Convolution : Apply filters to extract local features.  
+<img src="https://user-images.githubusercontent.com/59794238/119630073-8f3d9580-be49-11eb-94a3-ce1a78cc6b2e.PNG" width="40%"></img>  
+
+2. Convolutional Neural Networks (CNNs)  
+<img src="https://user-images.githubusercontent.com/59794238/119630100-95cc0d00-be49-11eb-8657-cdb7fd6f885c.PNG" width="50%"></img>  
+	1) Convolution: Apply filters to generate feature maps.  
+		<img src="https://user-images.githubusercontent.com/59794238/119630129-9c5a8480-be49-11eb-95f7-76a01203e810.PNG" width="40%"></img>  
+		- 여러 filter 사용
+		- Stride를 조절하고 input image에서의 feature 관계(Receptive Field)를 저장
+	2) Non-linearity: Apply after every convolution operation. Often ReLU.
+	3) Pooling: Downsampling operation on each feature map.
+		- MaxPool: 최댓값 추출  
+		<img src="https://user-images.githubusercontent.com/59794238/119630152-a2e8fc00-be49-11eb-9a50-5dd407056df4.PNG" width="40%"></img>  
+	4) Dense Network to use these features for classifying input image. (softmax classify)
+
+
+3. Applications
+- Object Detection
+	- Select region and check if there is an object. 선택된 region의 양이 너무 많아지는 문제 발생.
+		1) R-CNN: Manually find regions that we think have objects, use CNN
+		2) Faster R-CNN: Use conv layer to find region. (Region Proposal Network)  
+		<img src="https://user-images.githubusercontent.com/59794238/119630182-aa100a00-be49-11eb-9744-33b111f32b50.png" width="40%"></img>  
+	- Semantic Segmentation: Fully Convolutional Networks  
+	<img src="https://user-images.githubusercontent.com/59794238/119630200-b1371800-be49-11eb-9432-f71a1fdb9b5d.PNG" width="40%"></img>  
+- End-to-End Framework for Autonomous Navigation  
+<img src="https://user-images.githubusercontent.com/59794238/119630235-b85e2600-be49-11eb-877a-c9668b3fd06c.PNG" width="40%"></img>  
+
+</br>
+
+## Lecture 4 | Deep Generative Modeling
