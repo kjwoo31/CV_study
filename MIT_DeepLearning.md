@@ -2,19 +2,19 @@
 
 ## Lecture 1 | Introduction to Deep Learning
   
-1. Why Deep Learning?  
+### 1. Why Deep Learning?  
 - Deep Learning: Extract patterns from data using neural networks
 - Why now? : Big data, HW(GPU, parallelizable), SW
 
-2. Perceptron (single neuron): The structural building block of deep learning  
-	<img src="https://user-images.githubusercontent.com/59794238/119324261-9a15f000-bcba-11eb-9478-e9584f64efa4.png" width="50%"></img>  
-	1) input, weight의 dot product
-	2) add bias
-	3) Non-Linearity g : activation function, linear decision -> arbitrarily complex functions
+### 2. Perceptron (single neuron): The structural building block of deep learning  
+<img src="https://user-images.githubusercontent.com/59794238/119324261-9a15f000-bcba-11eb-9478-e9584f64efa4.png" width="50%"></img>  
+1) input, weight의 dot product
+2) add bias
+3) Non-Linearity g : activation function, linear decision -> arbitrarily complex functions
 - Sigmoid Function: 0~1의 결과. 확률 관련 문제에 적합함.
 - Rectified Linear Unit(ReLU): 음수면 0, 양수면 z. 단순해서 많이 사용.
 
-3. Building Neural Network
+### 3. Building Neural Network
 - Multi Output Perceptron
 	- **Dense** layer : Layer between input, output. Because all inputs are densely connected to all outputs.  
 	<img src="https://user-images.githubusercontent.com/59794238/119324345-ac902980-bcba-11eb-955b-2ec2873e633a.png" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/119324405-bca80900-bcba-11eb-984f-e9621af32d3e.png" width="40%"></img>  
@@ -23,14 +23,14 @@
 	- **Hidden** layer : Unlike input and output layer, they're hidden to some extent  
 	<img src="https://user-images.githubusercontent.com/59794238/119324744-21636380-bcbb-11eb-9fff-5df63ab4fc8a.png" width="40%"></img>  
 
-4. Applying Neural Network
+### 4. Applying Neural Network
 - Loss: The cost incurred from incorrect predictions. (Empirical Loss: Average of Loss)
 	- Softmax Cross Entropy Loss: Useful in binary classification. Cross entropy between two probability distributions.  
 	<img src="https://user-images.githubusercontent.com/59794238/119324898-48ba3080-bcbb-11eb-9dc1-36f534b8bfaf.png" width="50%"></img>  
 	- Mean Squared Error Loss: Predicting binary outputs. 분산.  
 	<img src="https://user-images.githubusercontent.com/59794238/119324935-54a5f280-bcbb-11eb-967e-a50bf2d59e76.png" width="50%"></img>  
 
-5. Training Neural Network
+### 5. Training Neural Network
 - Loss가 최소인 weight를 찾는다.
 - Gradient Descent  
 	<img src="https://user-images.githubusercontent.com/59794238/119324969-5d96c400-bcbb-11eb-89f0-7c58968b6c87.png" width="50%"></img>  
@@ -40,7 +40,7 @@
 	- 그 외에도 Adam, Adadelta, Adagrad, RMSProp이 있다.  
 	<img src="https://user-images.githubusercontent.com/59794238/119325162-959e0700-bcbb-11eb-9d9a-63b6a3b4a12d.png" width="50%"></img>
 
-6. Optimization
+### 6. Optimization
 - Setting the Learning Rate: 작으면 local minima에 갇히고 크면 overshoot. 따라서, 학습 과정에 따라 적응하는 Adaptive Learning Rate 사용.
 - Regularization: Model이 너무 복잡해지는 것을 막는 과정. 모델의 일반화, overfitting 방지.
 	- Dropout: During training, randomly set some activations to 0.  
@@ -52,22 +52,22 @@
 
 ## Lecture 2 | Recurrent Neural Networks
 
-1. Sequence Modeling Applications - 데이터 간 연관성 존재. Add time component.  
+### 1. Sequence Modeling Applications - 데이터 간 연관성 존재. Add time component.  
 <img src="https://user-images.githubusercontent.com/59794238/119547009-87d9a600-bdcf-11eb-878d-ad0edd911bbd.png" width="30%"></img>  
 
-2. Neurons with recurrence  
-	<img src="https://user-images.githubusercontent.com/59794238/119545633-003f6780-bdce-11eb-8202-9440e78ce1a3.PNG" width="30%"></img>  
-	1) Make Feed-Forward Network for each time step.
-	2) Apply recurrence relation to pass the past memory. (Connect Hidden States)
+### 2. Neurons with recurrence  
+<img src="https://user-images.githubusercontent.com/59794238/119545633-003f6780-bdce-11eb-8202-9440e78ce1a3.PNG" width="30%"></img>  
+1) Make Feed-Forward Network for each time step.
+2) Apply recurrence relation to pass the past memory. (Connect Hidden States)
 
-3. Recurrent Neural Network (RNN)  
+### 3. Recurrent Neural Network (RNN)  
 <img src="https://user-images.githubusercontent.com/59794238/119545699-0fbeb080-bdce-11eb-8f2c-d0c01753b63a.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/119545881-409ee580-bdce-11eb-8d0f-13e84dea0adc.PNG" width="30%"></img>  
 - Unfolding RNNs : Re-use the **same weight matrices** at every time step. Sum all losses.  
 <img src="https://user-images.githubusercontent.com/59794238/119547156-b9527180-bdcf-11eb-8b80-9ae94408ce7f.png" width="40%"></img>  
 - Use Call function to make a forward pass (tf.kears.layers.simpleRNN(rnn_units))  
 <img src="https://user-images.githubusercontent.com/59794238/119545939-501e2e80-bdce-11eb-87c3-09050f084218.PNG" width="40%"></img>  
 
-4. Sequence Modeling: Design Criteria
+### 4. Sequence Modeling: Design Criteria
 - Word prediction example: Encoding Language for a Neural Network (word -> vector)
 1. Handle Variable Sequence Lengths
 - Feed forward networks are not able to do this becuase they have inputs of fixed dimensionality.
@@ -76,7 +76,7 @@
 - We need information from the distant past to accurately predict the correct word.
 3. Capture Differences in Sequence Order : 순서가 중요함
 
-5. Backpropagation Through Time (BPTT)  
+### 5. Backpropagation Through Time (BPTT)  
 <img src="https://user-images.githubusercontent.com/59794238/119546000-62986800-bdce-11eb-86a0-f9cf40892929.PNG" width="40%"></img>  
 각 timestep에 대해 backpropagation을 한 후 최근->처음으로 pass
 - Gradient Issues : During backpropagation, we repeat gradient computation! (W_hh backpropagation 반복)
@@ -86,18 +86,18 @@
 		- Parameter Initialization: Initialize weights, biases to zero.
 		- Gated Cells: Use a more **complex recurrent unit with gates** (LSTM)
 
-6. Long Short Term Memory (LSTM) Networks  
+### 6. Long Short Term Memory (LSTM) Networks  
 <img src="https://user-images.githubusercontent.com/59794238/119546752-3af5cf80-bdcf-11eb-963b-facdb1167ce9.PNG" width="40%"></img>  
 - Information is added or removed through structures called gates.
 - Forget -> Store -> Update -> Output (Sigmoid gate로 조절)
 
-7. RNN Applications
-	1) Music Generation : Generate new composition.
-	2) Sentiment Classification : Use cross entropy about the output of sequence of words.
-	3) Machine Translation : Vector로 바꾸는 Encoder, 다른 언어로 바꾸는 Decoder 사용  
-		<img src="https://user-images.githubusercontent.com/59794238/119546781-434e0a80-bdcf-11eb-9988-53d308b439b8.PNG" width="30%"></img>  
-		- 데이터 양이 많아 발생하는 문제를 Attention을 사용하여 해결.  
-		<img src="https://user-images.githubusercontent.com/59794238/119546809-4c3edc00-bdcf-11eb-9ba2-45d716e4af5c.PNG" width="30%"></img>  
+### 7. RNN Applications
+1) Music Generation : Generate new composition.
+2) Sentiment Classification : Use cross entropy about the output of sequence of words.
+3) Machine Translation : Vector로 바꾸는 Encoder, 다른 언어로 바꾸는 Decoder 사용  
+	<img src="https://user-images.githubusercontent.com/59794238/119546781-434e0a80-bdcf-11eb-9988-53d308b439b8.PNG" width="30%"></img>  
+	- 데이터 양이 많아 발생하는 문제를 Attention을 사용하여 해결.  
+	<img src="https://user-images.githubusercontent.com/59794238/119546809-4c3edc00-bdcf-11eb-9ba2-45d716e4af5c.PNG" width="30%"></img>  
 
 </br>
 
@@ -135,24 +135,24 @@
 </br>
 
 ## Lecture 3 | Convolutional Neural Networks
-1. Learning Visual Features
+### 1. Learning Visual Features
 - Feature Extraction with Convolution : Apply filters to extract local features.  
 <img src="https://user-images.githubusercontent.com/59794238/119630073-8f3d9580-be49-11eb-94a3-ce1a78cc6b2e.PNG" width="40%"></img>  
 
-2. Convolutional Neural Networks (CNNs)  
+### 2. Convolutional Neural Networks (CNNs)  
 <img src="https://user-images.githubusercontent.com/59794238/119630100-95cc0d00-be49-11eb-8657-cdb7fd6f885c.PNG" width="50%"></img>  
-	1) Convolution: Apply filters to generate feature maps.  
-		<img src="https://user-images.githubusercontent.com/59794238/119630129-9c5a8480-be49-11eb-95f7-76a01203e810.PNG" width="40%"></img>  
-		- 여러 filter 사용
-		- Stride를 조절하고 input image에서의 feature 관계(Receptive Field)를 저장
-	2) Non-linearity: Apply after every convolution operation. Often ReLU.
-	3) Pooling: Downsampling operation on each feature map.
-		- MaxPool: 최댓값 추출  
-		<img src="https://user-images.githubusercontent.com/59794238/119630152-a2e8fc00-be49-11eb-9a50-5dd407056df4.PNG" width="40%"></img>  
-	4) Dense Network to use these features for classifying input image. (softmax classify)
+1) Convolution: Apply filters to generate feature maps.  
+	<img src="https://user-images.githubusercontent.com/59794238/119630129-9c5a8480-be49-11eb-95f7-76a01203e810.PNG" width="40%"></img>  
+	- 여러 filter 사용
+	- Stride를 조절하고 input image에서의 feature 관계(Receptive Field)를 저장
+2) Non-linearity: Apply after every convolution operation. Often ReLU.
+3) Pooling: Downsampling operation on each feature map.
+	- MaxPool: 최댓값 추출  
+	<img src="https://user-images.githubusercontent.com/59794238/119630152-a2e8fc00-be49-11eb-9a50-5dd407056df4.PNG" width="40%"></img>  
+4) Dense Network to use these features for classifying input image. (softmax classify)
 
 
-3. Applications
+### 3. Applications
 - Object Detection
 	- Select region and check if there is an object. 선택된 region의 양이 너무 많아지는 문제 발생.
 		1) R-CNN: Manually find regions that we think have objects, use CNN
@@ -166,3 +166,42 @@
 </br>
 
 ## Lecture 4 | Deep Generative Modeling
+### 1. Introduction
+- Generative modeling은 Unsupervised Learning. Learn the hidden or underlying structure of the data.
+- Capable of uncovering **underlying features** in a dataset. 
+	- Can make representative data set that is unbiased.
+	- Can detect outliers.
+- Latent variable: Data를 대표하는 underlying and hidden variable
+
+### 2. Autoencoders : Automatically encoding data.  
+<img src="https://user-images.githubusercontent.com/59794238/119799567-23296300-bf17-11eb-946b-4a4bfca4e71f.PNG" width="40%"></img>  
+1) Encoder: Learning a **lower-dimensional** feature representation from unlabeled training data. Compress the data into a small latent vector.
+2) Decoder: Learns mapping back from latent space to the original data.
+
+### 3. Variational Autoencoders (VAEs) : Add stochastic or variational twist on the architecture to generate smooter represenations  
+<img src="https://user-images.githubusercontent.com/59794238/119799590-2c1a3480-bf17-11eb-8d2d-94ccb97e4e07.PNG" width="40%"></img>  
+- Loss has regularization term. This part enforces the latent variable to have a same centered mean and all their variances to be regularized. (기준점이 같아져 비교하기 쉬워진다.) <img src="https://user-images.githubusercontent.com/59794238/119799619-350b0600-bf17-11eb-96c6-d3b353486e0f.PNG" width="20%"></img> <img src="https://user-images.githubusercontent.com/59794238/119799648-3ccaaa80-bf17-11eb-9c75-e95dc6f4bc9f.PNG" width="20%"></img>   
+- z가 확률적 분포를 가지면 backpropagation이 불가능. Fixed vector에 random constant를 더했다고 가정.  
+<img src="https://user-images.githubusercontent.com/59794238/119799680-46eca900-bf17-11eb-8675-203a81bbff5b.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/119799717-4eac4d80-bf17-11eb-8779-c799c1db92e7.PNG" width="40%"></img>  
+- Regulation되는 정도가 클수록 서로 다른 요소가 최대한 uncorrelated 됨. (β-VAE)
+<img src="https://user-images.githubusercontent.com/59794238/119799743-57048880-bf17-11eb-98b9-527dfa2a256e.PNG" width="40%"></img>  
+
+### 4. Generative Adversarial Networks (GAN) : Generate synthetic samples that were as faithful to a data distribution generally as possible.  
+<img src="https://user-images.githubusercontent.com/59794238/119799779-608df080-bf17-11eb-83ae-9a0efeb41385.PNG" width="40%"></img>  
+- Generator, Discriminator network competes against each other.
+	- Generator tries to create imitations of data to trick the discriminator.
+	- Discriminator tries to identify real data from fakes created by the generator.
+
+### 5. GANs: Recent advances  
+- Progressive GANs: Layer의 개수를 점점 늘리면서 훈련 반복. 높은 해상도의 이미지 생성.  
+<img src="https://user-images.githubusercontent.com/59794238/119799822-684d9500-bf17-11eb-9bfe-e2ffc306196f.PNG" width="40%"></img>  
+- StyleGAN: Style 요소를 추가. Age, facial structure 등의 특징을 반영 가능.  
+<img src="https://user-images.githubusercontent.com/59794238/119799856-713e6680-bf17-11eb-8b59-484d63fb861e.PNG" width="40%"></img>  
+- Conditional GANs: input을 넣으면 output을 도출하도록 label을 학습.  
+<img src="https://user-images.githubusercontent.com/59794238/119799889-7a2f3800-bf17-11eb-80cb-5a4e0a042a07.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/119799938-86b39080-bf17-11eb-9c78-e35c1a7a41e6.PNG" width="40%"></img>  
+- CycleGAN: Unpaired data를 활용하여 다른 domain의 data로 변환. (Autoencoder처럼 2개의 Generator, Discriminator network를 사용하여 domain을 왔다갔다 하는 것 같다.)
+<img src="https://user-images.githubusercontent.com/59794238/119799990-916e2580-bf17-11eb-8b4d-089593303a98.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/119800025-97fc9d00-bf17-11eb-93f7-56c94bc9e77f.PNG" width="20%"></img>  
+
+</br>
+
+## Lab 2 | 
