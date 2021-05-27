@@ -180,10 +180,11 @@
 
 ### 3. Variational Autoencoders (VAEs) : Add stochastic or variational twist on the architecture to generate smooter represenations  
 <img src="https://user-images.githubusercontent.com/59794238/119799590-2c1a3480-bf17-11eb-8d2d-94ccb97e4e07.PNG" width="40%"></img>  
-- Loss has regularization term. This part enforces the latent variable to have a same centered mean and all their variances to be regularized. (기준점이 같아져 비교하기 쉬워진다.) <img src="https://user-images.githubusercontent.com/59794238/119799619-350b0600-bf17-11eb-96c6-d3b353486e0f.PNG" width="20%"></img> <img src="https://user-images.githubusercontent.com/59794238/119799648-3ccaaa80-bf17-11eb-9c75-e95dc6f4bc9f.PNG" width="20%"></img>   
+- Loss has regularization term. This part enforces the latent variable to have a same centered mean and all their variances to be regularized. (기준점이 같아져 비교하기 쉬워진다.)  
+<img src="https://user-images.githubusercontent.com/59794238/119799619-350b0600-bf17-11eb-96c6-d3b353486e0f.PNG" width="20%"></img> <img src="https://user-images.githubusercontent.com/59794238/119799648-3ccaaa80-bf17-11eb-9c75-e95dc6f4bc9f.PNG" width="20%"></img>   
 - z가 확률적 분포를 가지면 backpropagation이 불가능. Fixed vector에 random constant를 더했다고 가정.  
 <img src="https://user-images.githubusercontent.com/59794238/119799680-46eca900-bf17-11eb-8675-203a81bbff5b.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/119799717-4eac4d80-bf17-11eb-8779-c799c1db92e7.PNG" width="40%"></img>  
-- Regulation되는 정도가 클수록 서로 다른 요소가 최대한 uncorrelated 됨. (β-VAE)
+- Regulation되는 정도가 클수록 서로 다른 요소가 최대한 uncorrelated 됨. (β-VAE)  
 <img src="https://user-images.githubusercontent.com/59794238/119799743-57048880-bf17-11eb-98b9-527dfa2a256e.PNG" width="40%"></img>  
 
 ### 4. Generative Adversarial Networks (GAN) : Generate synthetic samples that were as faithful to a data distribution generally as possible.  
@@ -199,7 +200,7 @@
 <img src="https://user-images.githubusercontent.com/59794238/119799856-713e6680-bf17-11eb-8b59-484d63fb861e.PNG" width="40%"></img>  
 - Conditional GANs: input을 넣으면 output을 도출하도록 label을 학습.  
 <img src="https://user-images.githubusercontent.com/59794238/119799889-7a2f3800-bf17-11eb-80cb-5a4e0a042a07.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/119799938-86b39080-bf17-11eb-9c78-e35c1a7a41e6.PNG" width="40%"></img>  
-- CycleGAN: Unpaired data를 활용하여 다른 domain의 data로 변환. (Autoencoder처럼 2개의 Generator, Discriminator network를 사용하여 domain을 왔다갔다 하는 것 같다.)
+- CycleGAN: Unpaired data를 활용하여 다른 domain의 data로 변환. (Autoencoder처럼 2개의 Generator, Discriminator network를 사용하여 domain을 왔다갔다 하는 것 같다.)  
 <img src="https://user-images.githubusercontent.com/59794238/119799990-916e2580-bf17-11eb-8b4d-089593303a98.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/119800025-97fc9d00-bf17-11eb-93f7-56c94bc9e77f.PNG" width="20%"></img>  
 
 </br>
