@@ -254,3 +254,31 @@
 
 ## Lecture 5 | Reinforcement Learning
 ### 1. Introduction
+- Classes of Learning Problems  
+<img src="https://user-images.githubusercontent.com/59794238/120014237-c912c580-c01c-11eb-8db8-0a097cdc081c.PNG" width="40%"></img>  
+- Reinforcement Learning (RL): Key Concepts  
+<img src="https://user-images.githubusercontent.com/59794238/120014301-dc259580-c01c-11eb-97ec-a5e7ecf221cf.PNG" width="40%"></img>  
+
+### 2. Value Learning : Find Q-function of each state, action.
+- Q-function: 특정 state에서의 특정 action에 대한 기대 보상값을 정리하고 기대 보상값의 합이 최대가 되는 policy 설정.
+- Deep Q Networks (DQN) : 현재 state가 주어지면 각 action에 대해 다음 state, action의 Q value를 예측하는 Network.  
+<img src="https://user-images.githubusercontent.com/59794238/120014321-e182e000-c01c-11eb-9103-59a49c314b49.PNG" width="40%"></img>  
+	- Useful in Atari Games.
+	- Only handle discrete and small action space. (Complexity)
+	- Cannot learn stochastic policies. (Flexibility)
+
+### 3. Policy Learning : Find best policy.
+- Policy Gradient (PG) : Q-function 대신 확률 분포로 나타냄.  
+<img src="https://user-images.githubusercontent.com/59794238/120014345-e8a9ee00-c01c-11eb-8fe4-c01532bbd129.PNG" width="40%"></img>  
+	- This can handle continuous action space.
+- Training Policy Gradients  
+<img src="https://user-images.githubusercontent.com/59794238/120014369-f0699280-c01c-11eb-8ae7-a3694d51932d.PNG" width="40%"></img>  
+	- 실제 환경에서는 '2. Run a policy until termination'을 할 수 없어 대신 simulator 사용.
+	- VISTA simulator: Use real data of the world to simulate self-driving.
+
+### 4. RL and the game of Go
+1) AlphaGo: learn from human data and RL by self play.  
+<img src="https://user-images.githubusercontent.com/59794238/120014397-f65f7380-c01c-11eb-8eb6-9c61b61991be.PNG" width="50%"></img>  
+2) AlphaZero: RL, Only self play.
+3) MuZero: Learn the rule of the game. 다음 state에 대한 예측을 바탕으로 action.  
+<img src="https://user-images.githubusercontent.com/59794238/120014419-fc555480-c01c-11eb-9b98-9f40c0e05ef1.PNG" width="50%"></img>  
