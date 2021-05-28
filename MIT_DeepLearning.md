@@ -282,3 +282,7 @@
 2) AlphaZero: RL, Only self play.
 3) MuZero: Learn the rule of the game. 다음 state에 대한 예측을 바탕으로 action.  
 <img src="https://user-images.githubusercontent.com/59794238/120014419-fc555480-c01c-11eb-9b98-9f40c0e05ef1.PNG" width="50%"></img>  
+
+</br>
+
+## Lecture 6 | Deep Learning New Frontiers
