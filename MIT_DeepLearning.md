@@ -250,3 +250,7 @@
 - 결과: Biased data에 대해서도 잘 예측  
 <img src="https://user-images.githubusercontent.com/59794238/119995236-58fa4480-c008-11eb-98d9-6b9a7b0d3bcb.PNG" width="40%"></img>  
 
+</br>
+
+## Lecture 5 | Reinforcement Learning
+### 1. Introduction
