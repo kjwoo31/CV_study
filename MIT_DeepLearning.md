@@ -205,4 +205,48 @@
 
 </br>
 
-## Lab 2 | 
+## Lab 2 | Computer Vision
+### 1. MNIST Digit Classification
+<img src="https://raw.githubusercontent.com/aamini/introtodeeplearning/master/lab2/img/mnist_2layers_arch.png" width="50%"></img>  
+1. Dataset : (train_images, train_labels), (test_images, test_labels) = tf.keras.datasets.mnist.load_data(), 차원 변환
+2. Model : 중간 layer는 ReLU, 마지막 layer는 softmax
+3. model.compile : optimizer (update 방식), loss, metrics (monitor steps)
+4. model.fit(train_images, train_labels, batch_size=BATCH_SIZE, epochs=EPOCHS)
+4-2. tf.GradientTape() 사용. 
+	> grads = tape.gradient(loss_value, cnn_model.trainable_variables)  
+	> optimizer.apply_gradients(zip(grads, cnn_model.trainable_variables))
+5. test_loss, test_acc = model.evaluate(test_images, test_labels)
+6. model.predict 이후 가장 높은 confidence를 갖는 argmax를 찾아 출력
+#### Dense Network만 사용하면 overfitting 문제 발생. CNN으로 feature를 추출하여 분류.
+- CNN model   
+<img src="https://raw.githubusercontent.com/aamini/introtodeeplearning/master/lab2/img/convnet_fig.png" width="70%"></img>  
+	- tf.keras.layers.Conv2D : filter 수, kernel_size (2D), activation function
+	- tf.keras.layers.MaxPool2D: pool_size (2D)
+
+### 2. Debiasing Facial Detection Systems
+- Dataset 분포, training 방식에 따라 bias 발생.
+1. skin tone, gender를 균일하게 만들기 위해 아래의 3개 Dataset 사용.
+	- 유명인의 얼굴 사진이 있는 CelebA Dataset
+	- non-human 사진이 있는 ImageNet
+	- skin type 분류가 되어 있는 Fitzpatrick Scale
+2. CNN for facial detection
+- define our CNN model, and then train on the CelebA and ImageNet datasets
+- test on Fitzpatrick Scale. Dark Male에 대한 표본이 적어 차이가 발생.  
+<img src="https://user-images.githubusercontent.com/59794238/119994525-a3c78c80-c007-11eb-9515-0b3f8fc8e557.PNG" width="20%"></img>  
+3. Mitigating algorithmic bias
+- learn features in an unbiased, unsupervised manner, without the need for any annotation, and then train a classifier fairly with respect to these features.
+4. Variational autoencoder (VAE) for learning latent structure
+- loss function: vae_loss = kl_weight * latent_loss + reconstruction_loss  
+<img src="https://user-images.githubusercontent.com/59794238/119994801-e9845500-c007-11eb-8bf1-0544cb6a65fa.PNG" width="60%"></img>  
+- reparameterization: backpropagation이 가능하도록 z의 확률적 요소를 epsilon으로 빼낸다.  
+<img src="https://user-images.githubusercontent.com/59794238/119994829-f1dc9000-c007-11eb-87b6-d62ad6d95394.PNG" width="20%"></img>  
+5. Debiasing variational autoencoder (DB-VAE)  
+<img src="https://raw.githubusercontent.com/aamini/introtodeeplearning/2019/lab2/img/DB-VAE.png" width="60%"></img>  
+- Change the probability that a given image is used during training based on how often its latent features appear in the dataset. 귀한 feature일수록(like dark skin, sunglasses, or hats) 많이 sampling 된다.
+- loss function: 얼굴 사진에 대해서는 VAE loss, Classification loss를 동시에 계산하고 non-얼굴 사진에 대해서는 Classification loss만 계산.  
+<img src="https://user-images.githubusercontent.com/59794238/119995205-50097300-c008-11eb-8926-6dca198378ae.PNG" width="60%"></img>  
+- Adaptive resampling for automated debiasing with DB-VAE: latent 분포를 확인하고 고르게 분포하도록 training sample probability 변화
+- training loop : get_training_sample_probabilities -> get_batch -> train (loss, gradient descent)
+- 결과: Biased data에 대해서도 잘 예측  
+<img src="https://user-images.githubusercontent.com/59794238/119995236-58fa4480-c008-11eb-98d9-6b9a7b0d3bcb.PNG" width="40%"></img>  
+
