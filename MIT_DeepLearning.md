@@ -286,3 +286,26 @@
 </br>
 
 ## Lecture 6 | Deep Learning New Frontiers
+### 1. Neural Network Failure Mode
+1. Data에 크게 의존한다.
+- Uncertainty를 추가하여 robust하게 함.
+	- Aleatoric Uncertainty: Data가 갖고 있는 고유의 noise 예) 개, 고양이 분류하는데 동시에 있는 경우.
+	- Epistemic Uncertainty: Network's confidence in its predictions 예) 개, 고양이 분류하는데 말이 있는 경우.
+2. Adversarial Attack : Modify input to increase error  
+<img src="https://user-images.githubusercontent.com/59794238/120063184-ec7f5400-c0a0-11eb-9297-246ea48d2cde.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/120063195-f86b1600-c0a0-11eb-93c4-f4f314673f49.PNG" width="40%"></img>  
+
+### 2. New Frontiers to tackle Neural Network problems
+1. Encoding Structure into Deep Learning : 복잡한 형태의 data를 단순하게 바꾸어 학습.
+- CNN : Take a kernel and slide the kernel across the 2d matrix representation of the image.
+- Graph Convolutional Networks (GCNs) : Take a kernel and travel around the node and pick up on features relevant to the local connectivity of that node.
+	- Useful in finding relation.  
+	<img src="https://user-images.githubusercontent.com/59794238/120063201-fe60f700-c0a0-11eb-8c6f-ed924f2e0aff.PNG" width="40%"></img>  
+	- Useful in learning 3D pointclouds : 독립적인 Point cloud를 연결하여 structure 형성  
+	<img src="https://user-images.githubusercontent.com/59794238/120063202-06209b80-c0a1-11eb-94d0-9cdf39b07fe2.PNG" width="40%"></img>  
+2. Automated Machine Learning (AutoML) : A learning algorithm that learns which model to use to solve a given problem.  
+<img src="https://user-images.githubusercontent.com/59794238/120063212-0f116d00-c0a1-11eb-9e00-ec71b0c4c908.PNG" width="30%"></img> <img src="https://user-images.githubusercontent.com/59794238/120063222-18023e80-c0a1-11eb-9bdf-c83e39954b42.PNG" width="30%"></img>  
+(Child Network에서 학습한 결과를 바탕으로 RNN에서 parameter 변경.)
+- Image Recognition에 적합한 Convolutional cell을 만들어 활용함. 기존 model보다 높은 정확도를 보임.  
+<img src="https://user-images.githubusercontent.com/59794238/120063227-1f294c80-c0a1-11eb-9dd1-27eac6b0cbb3.PNG" width="40%"></img>  
+- AutoAI: Data 선택, Model 선택 등을 AI가 모두 하는 시스템
+
