@@ -309,3 +309,36 @@
 <img src="https://user-images.githubusercontent.com/59794238/120063227-1f294c80-c0a1-11eb-9dd1-27eac6b0cbb3.PNG" width="40%"></img>  
 - AutoAI: Data 선택, Model 선택 등을 AI가 모두 하는 시스템
 
+</br>
+
+## Lecture 7 | Evidential Deep Learning and Uncertainty
+### 1. Probabilistic Learning: Labels have Softmax (discrete) & Gaussian (continuous) distribution.
+- Prediction E[y]에 Uncertainty Var[y]를 추가한다.
+- We use likelihood function to predict Labels  
+<img src="https://user-images.githubusercontent.com/59794238/120098643-12285e00-c172-11eb-85f5-b7649e555bc6.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/120098648-194f6c00-c172-11eb-932d-1152b1f4a31f.PNG" width="40%"></img>  
+- Likelihood vs Confidence: Likelihood는 예측한 값이 맞을 확률이고 Confidence는 실제 정확도를 의미한다.
+(예: 개와 고양이가 함께 찍힌 사진을 분류기에 넣으면 likelihood는 5:5이고 Confidence는 둘 다 100%다.)
+
+### 2. Types of uncertainty
+<img src="https://user-images.githubusercontent.com/59794238/120098655-210f1080-c172-11eb-85fe-bd6db060938c.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/120098661-28ceb500-c172-11eb-9686-1fee5ec1b649.PNG" width="30%"></img>  
+1. Aleatoric uncertainty: Underlying noise in the data.
+	- Can be learned directly using neural networks.
+2. **Epistemic uncertainty**: Unobserved domain에 대한 예측의 오차값.
+	- Much more challenging to estimate.
+	- Train a Bayesian NN instead of deterministic NN.
+
+### 3. Bayesian NN: Use posterior probability(사후 확률) of our weights using bayes rule.
+<img src="https://user-images.githubusercontent.com/59794238/120098671-3a17c180-c172-11eb-995b-d68d20060f85.PNG" width="40%"></img>  
+- Sampling을 통해 간접적으로 estimate posterior.  
+<img src="https://user-images.githubusercontent.com/59794238/120098679-413ecf80-c172-11eb-98b4-f2ad7a5de15b.PNG" width="40%"></img>  
+	- Dropout 또는 Ensemble을 활용하여 여러 개의 Weight를 구하고 기댓값, 분산 계산.
+	- 분산이 크면 Epistemic uncertainty가 크다고 인지할 수 있다.  
+	<img src="https://user-images.githubusercontent.com/59794238/120098686-49970a80-c172-11eb-847a-f487e45e0dd6.PNG" width="40%"></img>  
+	- 단점: 느리고 Memory를 많이 사용하는 방법이며 이전 상태에 크게 의존한다.
+
+### 4. Evidental Deep Learning: Likelihood parameters의 Distribution을 예측하는 Neural Network.
+<img src="https://user-images.githubusercontent.com/59794238/120098690-53207280-c172-11eb-9ebc-8cb6c89dcdfb.PNG" width="40%"></img>  
+- Distribution꼴의 parameter로 Likelihood parameters의 Distribution을 예측
+- 모델에서는 Evidential Parameter를 예측하고 uncertainty를 줄이면서 학습 진행.  
+<img src="https://user-images.githubusercontent.com/59794238/120098704-659aac00-c172-11eb-9b82-fdb6565e8e4c.PNG" width="40%"></img>  
+- 하나의 모델로 한 번만 학습하기 때문에 Bayesian NN보다 fast.
