@@ -342,3 +342,7 @@
 - 모델에서는 Evidential Parameter를 예측하고 uncertainty를 줄이면서 학습 진행.  
 <img src="https://user-images.githubusercontent.com/59794238/120098704-659aac00-c172-11eb-9b82-fdb6565e8e4c.PNG" width="40%"></img>  
 - 하나의 모델로 한 번만 학습하기 때문에 Bayesian NN보다 fast.
+
+</br>
+
+## Lecture 8 | 
