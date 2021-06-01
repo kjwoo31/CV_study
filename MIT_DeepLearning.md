@@ -345,4 +345,22 @@
 
 </br>
 
-## Lecture 8 | 
+## Lecture 8 | AI Bias and Fairness
+### 1. Algorithmic bias
+- We label and categorize into typical representations of a concept or object. So this doesn't fit in things that are atypical. (ex. yellow watermelon) -> Biases, stereotypes arise.
+- Common Biases 분류  
+<img src="https://user-images.githubusercontent.com/59794238/120286831-a113b280-c2f9-11eb-840b-985bf4d5f7c0.JPG" width="40%"></img>  
+	- Interpretation-Driven: 잘못된 해석, 사람의 취향 반영 -> 데이터를 올바르게 해석, 여러 종류의 데이터 사용
+	- Data-Driven
+		- Class Imbalance (ex. 암 환자) : 각 class의 data 숫자가 다른 경우.
+			- Batch Selection: 1:1 비율이 되게 Batch를 선택하여 넣어줌.
+			- Example Weighting: 적은 Data를 더 많이 반영하게 함.
+		- Biases in Features
+			- Adversarial Multi-Task Learning to Mitigate Bias : Minimize sensitive attribute z  
+			<img src="https://user-images.githubusercontent.com/59794238/120286944-b983cd00-c2f9-11eb-8eb0-20de176d7b72.JPG" width="40%"></img>  
+			- Adaptive Resampling for Automated Debiasing: Learn bias from latent structure.  
+			<img src="https://user-images.githubusercontent.com/59794238/120286990-c6a0bc00-c2f9-11eb-895f-c13741d98bea.JPG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/120287033-d15b5100-c2f9-11eb-91ad-12273b21ef3d.JPG" width="40%"></img>  
+
+(참고자료)  
+<img src="https://user-images.githubusercontent.com/59794238/120287077-dc15e600-c2f9-11eb-851d-aab69727f7f0.JPG" width="40%"></img>  
+
