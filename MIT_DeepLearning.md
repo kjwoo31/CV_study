@@ -388,7 +388,7 @@
 1. Self-supervised Learning
 - Source Domain에 있지 않은 category의 target이 있을 수 있음.
 - DANCE: domain adaptation with neighborhood clustering. Domain에 있지 않은 category의 target은 삭제하여 정확도가 높아진다.  
-<img src="https://user-images.githubusercontent.com/59794238/121348832-cccf1200-c963-11eb-98a5-103e7a133400.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/121348865-d6f11080-c963-11eb-9f2f-6143bfecdc20.PNG" width="20%"></img>   
+<img src="https://user-images.githubusercontent.com/59794238/121348832-cccf1200-c963-11eb-98a5-103e7a133400.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/121348865-d6f11080-c963-11eb-9f2f-6143bfecdc20.PNG" width="30%"></img>   
 
 2. Consistency  
 <img src="https://user-images.githubusercontent.com/59794238/121348911-e40dff80-c963-11eb-8763-ba63e2b79518.PNG" width="40%"></img>  
