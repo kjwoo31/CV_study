@@ -367,4 +367,34 @@
 </br>
 
 ## Lecture 10 | Taming Dataset Bias via Domain Adaptation
+### 1. Domain adaptation: adapt knowledge to new domain (new domain의 data는 unlabeled)
+<img src="https://user-images.githubusercontent.com/59794238/121348758-b1fc9d80-c963-11eb-951e-24a6a9ac91eb.PNG" width="40%"></img>  
 
+### 2. Adversarial domain alignment
+1. Feature-space : unsupervised fine-tuning  
+<img src="https://user-images.githubusercontent.com/59794238/121348771-b7f27e80-c963-11eb-8f44-1cf1fecb29d0.PNG" width="40%"></img>  
+- Domain Discriminator: try to predict the domain label.
+- Endocer: fool the discriminator.
+
+2. Pixel-space  
+<img src="https://user-images.githubusercontent.com/59794238/121348788-bde85f80-c963-11eb-8311-9b12e4de9d74.PNG" width="40%"></img>  
+- Use GAN (cycloGAN) to make it look like the target domain.
+
+3. Few-shot domain translation  
+<img src="https://user-images.githubusercontent.com/59794238/121348815-c6d93100-c963-11eb-981e-1cc465185228.PNG" width="40%"></img>  
+- 각각의 Content, Style을 합쳐 다른 domain의 사진 생성.
+
+### 3. Beyond alignment
+1. Self-supervised Learning
+- Source Domain에 있지 않은 category의 target이 있을 수 있음.
+- DANCE: domain adaptation with neighborhood clustering. Domain에 있지 않은 category의 target은 삭제하여 정확도가 높아진다.  
+<img src="https://user-images.githubusercontent.com/59794238/121348832-cccf1200-c963-11eb-98a5-103e7a133400.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/121348865-d6f11080-c963-11eb-9f2f-6143bfecdc20.PNG" width="20%"></img>   
+
+2. Consistency  
+<img src="https://user-images.githubusercontent.com/59794238/121348911-e40dff80-c963-11eb-8763-ba63e2b79518.PNG" width="40%"></img>  
+- Self-supervised pretraining + consistency loss
+- consistency loss: 회전, 흑백 등 변화를 준 사진과의 prediction 차이.
+
+</br>
+
+## Lecture 11 | Towards AI for 3D Content Creation
