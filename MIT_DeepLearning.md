@@ -398,3 +398,24 @@
 </br>
 
 ## Lecture 11 | Towards AI for 3D Content Creation
+### Synthesizing Worlds
+1. Scene Composition  
+<img src="https://user-images.githubusercontent.com/59794238/121567955-1ac64180-ca5a-11eb-9a56-4575593fd084.PNG" width="40%"></img>  
+- Game에서 특정 환경의 Scene을 제작할 때 위와 같은 Scene graph를 그려 구성
+- 위 distribution을 사람이 일일이 하는 방법 대신 AI로 제작할 수는 없을까?
+- Meta-Sim  
+<img src="https://user-images.githubusercontent.com/59794238/121567996-26b20380-ca5a-11eb-958a-703e6ef91b04.PNG" width="40%"></img>  
+	- Distribution Matching: 가상, 현실 matching  
+	<img src="https://user-images.githubusercontent.com/59794238/121568019-2e71a800-ca5a-11eb-87cd-eb1d42c63931.PNG" width="20%"></img>  
+	- Task Optimization: 학습 적용  
+	<img src="https://user-images.githubusercontent.com/59794238/121568053-3598b600-ca5a-11eb-98d5-37518af031ed.PNG" width="20%"></img>  
+- Meta-Sim2: Learning Scene Structures  
+<img src="https://user-images.githubusercontent.com/59794238/121568071-3b8e9700-ca5a-11eb-8ea2-01ded0be4239.PNG" width="40%"></img>  
+- Making Road Layout as a Graph  
+<img src="https://user-images.githubusercontent.com/59794238/121568089-434e3b80-ca5a-11eb-8afe-7cbd72b7342c.PNG" width="40%"></img>  
+- Objects: 2D image -> 3D object  
+<img src="https://user-images.githubusercontent.com/59794238/121568113-49441c80-ca5a-11eb-8264-221f67d9a942.PNG" width="40%"></img>  
+	- 데이터 생성: GAN 활용  
+	<img src="https://user-images.githubusercontent.com/59794238/121568136-4fd29400-ca5a-11eb-9a3a-fe6a8197ca50.PNG" width="40%"></img>  
+
+참고) AI for Content Creation: 3D DL Library 활용 (NVIDIA Omniverse)
