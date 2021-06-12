@@ -332,7 +332,7 @@
 <img src="https://user-images.githubusercontent.com/59794238/121770282-6df7db80-cba3-11eb-9bf3-19cd5e977d67.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/121770306-8cf66d80-cba3-11eb-8f85-f15bad3f2779.gif" width="40%"></img>  
 
 ### Part 2: Pong
-- ROM is missing for pong 에러 메시지가 발생해서 해보지는 못 함.
+- 'ROM is missing for pong' 에러 메시지가 서 해보지는 못 함.
 - observation이 그림이므로 agent를 정의할 때 CNN 사용. Crop, scale, make in single color 등 pre-processing 과정도 거침.
 - 상대도 자유롭게 움직이는 환경. 따라서 지난 2개 frame(observation)의 차이를 이용하여 action 결정.
 
