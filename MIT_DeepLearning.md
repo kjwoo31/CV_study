@@ -311,6 +311,33 @@
 
 </br>
 
+## Lab 3 | Reinforcemnet Learning
+### Part 1: Cartpole
+<img src="https://danielpiedrahita.files.wordpress.com/2017/02/cart-pole.png" width="20%"></img>  
+1. Define env, agent
+	1) gym.make("CartPole-v0")
+	2) agent 정의 : observation를 바탕으로 적절한 action 확률을 결정하는 feed-forward network 정의.
+		- Observation: Cart position, Cart velocity, Pole angle, Pole rotation rate
+	3) agent의 action을 결정하는 choose_action function 정의.
+2. Define agent's memory
+- agent will remember its past actions, observations, and rewards
+3. Reward function  
+<img src="https://user-images.githubusercontent.com/59794238/121770272-5fa9bf80-cba3-11eb-9901-7c30cf25b318.PNG" width="15%"></img>  
+- 0<\gamma<1, 가까운 time step의 reward 영향을 더 많이 받게 함.
+4. Learning algorithm
+- 목표: maximize the likelihood of actions that result in large rewards.
+- reward가 높은 행동에 대한 negative log-likelihood가 최소가 되게 함. (softmax cross entropy 사용)
+
+(결과)  
+<img src="https://user-images.githubusercontent.com/59794238/121770282-6df7db80-cba3-11eb-9bf3-19cd5e977d67.PNG" width="40%"></img> <img src="https://user-images.githubusercontent.com/59794238/121770306-8cf66d80-cba3-11eb-8f85-f15bad3f2779.gif" width="40%"></img>  
+
+### Part 2: Pong
+- ROM is missing for pong 에러 메시지가 발생해서 해보지는 못 함.
+- observation이 그림이므로 agent를 정의할 때 CNN 사용. Crop, scale, make in single color 등 pre-processing 과정도 거침.
+- 상대도 자유롭게 움직이는 환경. 따라서 지난 2개 frame(observation)의 차이를 이용하여 action 결정.
+
+</br>
+
 ## Lecture 7 | Evidential Deep Learning and Uncertainty
 ### 1. Probabilistic Learning: Labels have Softmax (discrete) & Gaussian (continuous) distribution.
 - Prediction E[y]에 Uncertainty Var[y]를 추가한다.
